@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/19 14:11:01 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/20 12:16:55 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,12 @@ typedef struct	s_object
 	t_light			*light_n;
 	t_plan			*plan;
 	t_sphere		*sphere;
-	t_sq		*sq;
+	t_sq			*sq;
 	t_cylindre		*cy;
 	t_triangle		*triangle;
 	t_vector		*obj_col;
 	t_vector		*shd_col;
-	t_shd		*shd;
+	t_shd			*shd;
 	t_vector		*rot;
 	t_vector		*tr;
 }				t_object;
@@ -184,6 +184,10 @@ int				get_next_line(int fd, char **line);
 char			*ft_strdup(const char *src);
 size_t			ft_strlen(const char *str);
 char			**ft_split(char const *s, char c);
+void			translate(char **info, t_object *object,
+t_cam_elm **c_ptr, t_element **ptr);
+void			rotate(char **info, t_object *object,
+t_cam_elm **c_ptr,t_element **ptr);
 t_vector		rot_x(t_vector vec, double teta);
 t_vector		rot_y(t_vector vec, double teta);
 t_vector		rot_z(t_vector vec, double teta);

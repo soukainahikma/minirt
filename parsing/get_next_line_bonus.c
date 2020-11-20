@@ -6,12 +6,13 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 13:48:12 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/19 09:14:04 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/20 09:56:48 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-# define BUFFER_SIZE 32
+#define BUFFER_SIZE 32
+
 size_t	size_of_line(char *buff)
 {
 	size_t i;

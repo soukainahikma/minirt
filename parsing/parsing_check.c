@@ -1,11 +1,23 @@
-#include"parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_check.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/20 10:52:00 by shikma            #+#    #+#             */
+/*   Updated: 2020/11/20 11:29:37 by shikma           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "parsing.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n < 0)
 	{
@@ -29,32 +41,40 @@ void		ft_putnbr_fd(int n, int fd)
 			ft_putchar_fd(n + '0', fd);
 	}
 }
-int parsing_check(int error,char **str,int argc,int *error_nb)
-{
-  error_nb[0]=0;
-  error_nb[1]=0;
-  error_nb[2]=0;
-    char *line;
-    int fd = open(str[1], O_RDONLY);
-    int rest = 1;
-    int i;
 
-    i = 0;
-    if(check_general_error(str,argc) != 0)
-        return(my_file(check_general_error(str,argc),i));
-  	while(rest == 1)
-    {
-      rest = get_next_line(fd, &line);
-      if(rest == -1)
-        return(my_file(-3,i));
-      i++;
-     error = check_struct(line,error_nb);
-     if(error != 0)
-        return(my_file(error,i));
-    }
-    if(error_nb[0] == 0)
-      return(my_file(-8,0));
-    if(error_nb[2] == 0)
-      return(my_file(-9,0));
-return(error);
+void	err_init(int **error_nb, int *i, int *rest)
+{
+	(*error_nb)[0] = 0;
+	(*error_nb)[1] = 0;
+	(*error_nb)[2] = 0;
+	(*rest) = 1;
+	(*i) = 0;
+}
+
+int		parsing_check(int error, char **str, int argc, int *error_nb)
+{
+	char	*line;
+	int		fd;
+	int		rest;
+	int		i;
+
+	fd = open(str[1], O_RDONLY);
+	err_init(&error_nb, &i, &rest);
+	if (check_general_error(str, argc) != 0)
+		return (my_file(check_general_error(str, argc), i));
+	while (rest == 1)
+	{
+		rest = get_next_line(fd, &line);
+		if (rest == -1)
+			return (my_file(-3, i));
+		i++;
+		error = check_struct(line, error_nb);
+		if (error != 0)
+			return (my_file(error, i));
+	}
+	if (error_nb[0] == 0)
+		return (my_file(-8, 0));
+	if (error_nb[2] == 0)
+		return (my_file(-9, 0));
+	return (error);
 }

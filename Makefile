@@ -43,6 +43,8 @@ SRC  =	srcs/intersection.c\
 		parsing/check_struct.c\
 		parsing/error_message.c\
 		parsing/general_check.c\
+		parsing/parse_translation.c\
+		parsing/parse_rotation.c\
 
 	#gcc -Wall -Werror -Wextra -std=gnu99 -I. -g -lm -lGLEW -lglfw -lGL ${OBJS} minilibx/libmlx_Linux.a -o ${NAME}
 

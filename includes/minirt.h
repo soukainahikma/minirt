@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/19 14:31:30 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/20 10:06:19 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,14 @@ t_raydata ray_info);
 void			calculate_light(t_vector direction, t_object *obj,
 t_vector light_position);
 t_vector		ray(t_vector origin, t_vector direction, double t);
-double			hit_sphere(t_vector cam, t_raydata *ray_info, t_object *obj);
+double			hit_sphere(t_vector cam, t_raydata *ray_info,
+t_object *obj);
 double			hit_plan(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_sq(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_cylinder(t_vector cam, t_raydata *ray_info, t_object *obj);
-t_vector		shadow(t_element *list, t_move *all, t_vector col,t_raydata ray);
+t_vector		shadow(t_element *list, t_move *all, t_vector col,
+t_raydata ray);
 double			inter(t_element *liste, t_raydata *ray_info,
 t_vector data, t_object *obj);
 int				check_distance(t_vector origin, t_vector light,

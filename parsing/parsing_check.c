@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:52:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 11:29:37 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/21 11:49:51 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,56 @@ void	err_init(int **error_nb, int *i, int *rest)
 	(*i) = 0;
 }
 
+int		check_struct(char *str, int *error_nb, char **info)
+{
+	if (info[0][0] == 'R' && ft_strlen(info[0]) == 1)
+		return (res_checker(str, &error_nb));
+	else if (info[0][0] == 'A' && ft_strlen(info[0]) == 1)
+		return (am_checker(str, &error_nb));
+	else if (info[0][0] == 'c' && ft_strlen(info[0]) == 1)
+		return (cam_checker(str, &error_nb));
+	else if (info[0][0] == 'l' && ft_strlen(info[0]) == 1)
+		return (light_checker(str));
+	else if (info[0][0] == 'c' && info[0][1] == 'y' && ft_strlen(info[0]) == 2)
+		return (cy_checker(str));
+	else if (info[0][0] == 'p' && info[0][1] == 'l' && ft_strlen(info[0]) == 2)
+		return (pl_checker(str));
+	else if (info[0][0] == 's' && info[0][1] == 'p' && ft_strlen(info[0]) == 2)
+		return (sp_checker(str));
+	else if (info[0][0] == 's' && info[0][1] == 'q' && ft_strlen(info[0]) == 2)
+		return (sq_checker(str));
+	else if (info[0][0] == 't' && info[0][1] == 'r' && ft_strlen(info[0]) == 2)
+		return (tr_checker(str));
+	else if (info[0][0] == 't' && info[0][1] == 'r' &&
+		info[0][2] == 'a' && ft_strlen(info[0]) == 3)
+		return (tra_checker(str));
+	else if (info[0][0] == 'r' && info[0][1] == 'o' &&
+		info[0][2] == 't' && ft_strlen(info[0]) == 3)
+		return (rot_checker(str));
+	return (-1);
+}
+
 int		parsing_check(int error, char **str, int argc, int *error_nb)
 {
 	char	*line;
 	int		fd;
-	int		rest;
-	int		i;
+	int		rest_i[2];
 
 	fd = open(str[1], O_RDONLY);
-	err_init(&error_nb, &i, &rest);
+	err_init(&error_nb, &rest_i[1], &rest_i[0]);
 	if (check_general_error(str, argc) != 0)
-		return (my_file(check_general_error(str, argc), i));
-	while (rest == 1)
+		return (my_file(check_general_error(str, argc), rest_i[1]));
+	while (rest_i[0] == 1)
 	{
-		rest = get_next_line(fd, &line);
-		if (rest == -1)
-			return (my_file(-3, i));
-		i++;
-		error = check_struct(line, error_nb);
+		rest_i[0] = get_next_line(fd, &line);
+		if (rest_i[0] == -1)
+			return (my_file(-3, rest_i[1]));
+		rest_i[1]++;
+		if (nb_word(line) == 0)
+			return (my_file(-2, rest_i[1]));
+		error = check_struct(line, error_nb, ft_split_whitespaces(line));
 		if (error != 0)
-			return (my_file(error, i));
+			return (my_file(error, rest_i[1]));
 	}
 	if (error_nb[0] == 0)
 		return (my_file(-8, 0));

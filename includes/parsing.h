@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 12:16:55 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/21 12:03:36 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ int				check_color(char *t);
 int				parsing_check(int error, char **str, int argc, int *error_nb);
 int				check_normal(char *t);
 int				check_size(char *t);
-int				check_struct(char *str, int *error_nb);
+int				check_struct(char *str, int *error_nb, char **info);
 int				is_float(char *t);
 int				is_2_commas(char *t);
 int				check_position(char *t);
@@ -187,8 +187,19 @@ char			**ft_split(char const *s, char c);
 void			translate(char **info, t_object *object,
 t_cam_elm **c_ptr, t_element **ptr);
 void			rotate(char **info, t_object *object,
-t_cam_elm **c_ptr,t_element **ptr);
+t_cam_elm **c_ptr, t_element **ptr);
 t_vector		rot_x(t_vector vec, double teta);
 t_vector		rot_y(t_vector vec, double teta);
 t_vector		rot_z(t_vector vec, double teta);
+int				res_checker(char *str, int **error_nb);
+int				am_checker(char *str, int **error_nb);
+int				cam_checker(char *str, int **error_nb);
+int				light_checker(char *str);
+int				cy_checker(char *str);
+int				pl_checker(char *str);
+int				sp_checker(char *str);
+int				sq_checker(char *str);
+int				tr_checker(char *str);
+int				tra_checker(char *str);
+int				rot_checker(char *str);
 #endif

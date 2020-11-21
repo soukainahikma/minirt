@@ -16,9 +16,7 @@ SRC  =	srcs/intersection.c\
 		srcs/main_sphere.c\
 		srcs/shadow_intersection.c\
 		srcs/draw.c\
-		srcs/translation.c\
 		srcs/keyboard_mouse.c\
-		srcs/rotation.c\
 		srcs/bmp.c\
 		\
 		parsing/fill_ambiant.c\
@@ -40,7 +38,9 @@ SRC  =	srcs/intersection.c\
 		parsing/ft_isdigit.c\
 		parsing/coordinate_checkers.c\
 		parsing/parsing_check.c\
-		parsing/check_struct.c\
+		parsing/check_struct1.c\
+		parsing/check_struct2.c\
+		parsing/check_struct3.c\
 		parsing/error_message.c\
 		parsing/general_check.c\
 		parsing/parse_translation.c\

@@ -1,69 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_struct.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/21 11:29:13 by shikma            #+#    #+#             */
+/*   Updated: 2020/11/21 11:46:35 by shikma           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
-void fill_struct(char **info,t_data *data,t_object *object,t_element **liste)
+
+void	struct_1(char **info, t_data *data, t_object *obj, t_element **liste)
 {
-	if(info[0][0] == 'R')
+	if (info[0][0] == 'R')
 	{
 		data->res = fill_resolution(info);
-		if(*liste == NULL)
-			*liste = create_list(data->res,1,sizeof(t_resolution));
+		if (*liste == NULL)
+			*liste = create_list(data->res, 1, sizeof(t_resolution));
 		else
-			*liste = add_end(liste,data->res,1,sizeof(t_resolution));
+			*liste = add_end(liste, data->res, 1, sizeof(t_resolution));
 	}
-	else if(info[0][0] == 'A')
-		 {
+	else if (info[0][0] == 'A')
+	{
 		data->am = fill_ambiant(info);
-		  if(*liste == NULL)
-			*liste = create_list(data->am,2,sizeof(t_ambiant));
+		if (*liste == NULL)
+			*liste = create_list(data->am, 2, sizeof(t_ambiant));
 		else
-			*liste = add_end(liste,data->am,2,sizeof(t_ambiant));
+			*liste = add_end(liste, data->am, 2, sizeof(t_ambiant));
 	}
-	else if(info[0][0] == 'c' && info[0][1] == 'y')
-		{
-		object->cy = fill_cylindre(info);
-		if(*liste == NULL)
-			*liste = create_list(object->cy,8,sizeof(t_cylindre));
-		else
-			*liste = add_end(liste,object->cy,8,sizeof(t_cylindre));
-	}
-	else if(info[0][0] == 'l')
+	else if (info[0][0] == 'c' && info[0][1] == 'y')
 	{
-	   object->light_n = fill_light(info);
-		if(*liste == NULL)
-			*liste = create_list(object->light_n,4,sizeof(t_light));
+		obj->cy = fill_cylindre(info);
+		if (*liste == NULL)
+			*liste = create_list(obj->cy, 8, sizeof(t_cylindre));
 		else
-			*liste = add_end(liste,object->light_n,4,sizeof(t_light));
-			
+			*liste = add_end(liste, obj->cy, 8, sizeof(t_cylindre));
 	}
-	else if(info[0][0] == 'p' && info[0][1] == 'l')
+}
+
+void	struct_2(char **info, t_data *data, t_object *obj, t_element **liste)
+{
+	if (info[0][0] == 'l')
 	{
-		object->plan = fill_plan(info);
-		if(*liste == NULL)
-			*liste = create_list(object->plan,5,sizeof(t_plan));
+		obj->light_n = fill_light(info);
+		if (*liste == NULL)
+			*liste = create_list(obj->light_n, 4, sizeof(t_light));
 		else
-			*liste = add_end(liste,object->plan,5,sizeof(t_plan));
+			*liste = add_end(liste, obj->light_n, 4, sizeof(t_light));
 	}
-	else if(info[0][0] == 's' && info[0][1] == 'p')
-		{
-		object->sphere = fill_sphere(info);
-		if(*liste == NULL)
-			*liste = create_list(object->sphere,6,sizeof(t_sphere));
+	else if (info[0][0] == 'p' && info[0][1] == 'l')
+	{
+		obj->plan = fill_plan(info);
+		if (*liste == NULL)
+			*liste = create_list(obj->plan, 5, sizeof(t_plan));
 		else
-			*liste = add_end(liste,object->sphere,6,sizeof(t_sphere));
+			*liste = add_end(liste, obj->plan, 5, sizeof(t_plan));
 	}
-	else if(info[0][0] == 's' && info[0][1] == 'q')
-	   {
-		object->sq = fill_square(info);
-		if(*liste == NULL)
-			*liste = create_list(object->sq,7,sizeof(t_sq));
+	else if (info[0][0] == 's' && info[0][1] == 'p')
+	{
+		obj->sphere = fill_sphere(info);
+		if (*liste == NULL)
+			*liste = create_list(obj->sphere, 6, sizeof(t_sphere));
 		else
-			*liste = add_end(liste,object->sq,7,sizeof(t_sq));
+			*liste = add_end(liste, obj->sphere, 6, sizeof(t_sphere));
 	}
-	else if(info[0][0] == 't' && info[0][1] == 'r' && info[0][2] != 'a')
-		{
-		object->triangle = fill_triangle(info);
-		if(*liste == NULL)
-			*liste = create_list(object->triangle,9,sizeof(t_triangle));
+}
+
+void	struct_3(char **info, t_data *data, t_object *obj, t_element **liste)
+{
+	if (info[0][0] == 's' && info[0][1] == 'q')
+	{
+		obj->sq = fill_square(info);
+		if (*liste == NULL)
+			*liste = create_list(obj->sq, 7, sizeof(t_sq));
 		else
-			*liste = add_end(liste,object->triangle,9,sizeof(t_triangle));
+			*liste = add_end(liste, obj->sq, 7, sizeof(t_sq));
 	}
+	else if (info[0][0] == 't' && info[0][1] == 'r' && info[0][2] != 'a')
+	{
+		obj->triangle = fill_triangle(info);
+		if (*liste == NULL)
+			*liste = create_list(obj->triangle, 9, sizeof(t_triangle));
+		else
+			*liste = add_end(liste, obj->triangle, 9, sizeof(t_triangle));
+	}
+}
+
+void	fill_struct(char **info, t_data *data, t_object *obj, t_element **liste)
+{
+	struct_1(info, data, obj, liste);
+	struct_2(info, data, obj, liste);
+	struct_3(info, data, obj, liste);
 }

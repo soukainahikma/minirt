@@ -6,13 +6,13 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:17:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/19 14:30:59 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/21 12:05:36 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vector		draw(t_vector ray, t_move *move)
+t_vector		draw(t_vector ray, t_move *mv)
 {
 	t_element	*ptr;
 	t_raydata	ray_info;
@@ -22,16 +22,16 @@ t_vector		draw(t_vector ray, t_move *move)
 	ray_info.max_d[0] = INT_MAX;
 	ray_info.max_d[1] = INT_MAX;
 	ray_info.ray_direc[0] = ray;
-	ptr = move->liste;
+	ptr = mv->liste;
 	color = (t_vector){0, 0, 0};
 	while (ptr != NULL)
 	{
 		ray_info.id = 0;
-		t1 = inter(ptr, &ray_info,move->object.camera->lookfrom, &move->object);
+		t1 = inter(ptr, &ray_info, mv->object.camera->lookfrom, &mv->object);
 		if (t1 == 1)
 		{
-			color = light(move->liste, &move->object, move->data, ray_info);
-			color = shadow(ptr, move, color,ray_info);
+			color = light(mv->liste, &mv->object, mv->data, ray_info);
+			color = shadow(ptr, mv, color, ray_info);
 		}
 		ptr = ptr->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 10:06:19 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/21 19:19:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_vector		shadow(t_element *list, t_move *all, t_vector col,
 t_raydata ray);
 double			inter(t_element *liste, t_raydata *ray_info,
 t_vector data, t_object *obj);
-int				check_distance(t_vector origin, t_vector light,
+double				check_distance(t_vector origin, t_vector light,
 t_vector object);
 void			image(t_move *move);
 int				press_key(int key, t_move *move);

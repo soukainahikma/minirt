@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light_intensity.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:57:16 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/19 14:09:37 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/22 09:10:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int			check_distance(t_vector origin, t_vector light, t_vector object)
+double			check_distance(t_vector origin, t_vector light, t_vector object)
 {
 	double	a;
 	double	b;

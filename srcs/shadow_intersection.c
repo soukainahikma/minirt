@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow_intersection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:17:37 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/21 10:43:36 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/22 12:32:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vector	sh_col(t_light *l, t_move *move)
 	t_vector col;
 
 	col = (t_vector){0, 0, 0};
-	col = multiplication(l->kl * move->object.shd->ks,
+	col = multiplication(0*l->kl * move->object.shd->ks,
 	division(255, *(move->object.shd_col)));
 	return (col);
 }
@@ -47,13 +47,17 @@ t_vector	shadow(t_element *list, t_move *all, t_vector col, t_raydata ray)
 		{
 			sh_cal(&l, &all->object, &ray, li[0]);
 			li[1] = all->liste;
+			t[1] = 0;
 			while (li[1] != NULL)
 			{
 				t[0] = inter(li[1], &ray, all->object.shd->shd_p, &all->object);
-				t[1] = check_distance(all->object.shd->shd_p,
-				l->light_p, all->object.light_n->light);
+				if(t[0] == 1)
+					t[1] = check_distance(all->object.shd->shd_p, 
+					l->light_p, all->object.light_n->light);
 				if (t[0] == 1 && t[1] == 1 && li[1] != list)
-					return (sh_col(l, all));
+					{
+						col = sh_col(l, all);
+					}
 				li[1] = li[1]->next;
 			}
 		}

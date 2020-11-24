@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plan.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 11:27:21 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/22 12:18:47 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:43:55 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	plan_cal(t_vector cam, t_raydata *ray_, t_object *obj)
 {
-	obj->light_n->light = ray(cam, ray_->ray_direc[ray_->id], ray_->t);
+	obj->light->hit = ray(cam, ray_->ray_direc[ray_->id], ray_->t);
 	if (dot(ray_->ray_direc[ray_->id], obj->plan->plan_d) <= 0)
-		obj->light_n->normal = obj->plan->plan_d;
+		obj->light->normal = obj->plan->plan_d;
 	else
-		obj->light_n->normal = multiplication(-1, obj->plan->plan_d);
+		obj->light->normal = multiplication(-1, obj->plan->plan_d);
 	obj->obj_col = malloc(sizeof(t_vector));
 	*(obj->obj_col) = obj->plan->plan_col;
 	ray_->max_d[ray_->id] = ray_->t;

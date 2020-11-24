@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 12:22:02 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/22 12:18:40 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:43:17 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ double	hit_sphere(t_vector cam, t_raydata *ray_, t_object *obj)
 		if (t1 < ray_->max_d[ray_->id])
 		{
 			ray_->max_d[ray_->id] = t1;
-			obj->light_n->light = ray(cam, ray_->ray_direc[ray_->id], t1);
-			obj->light_n->normal = soustraction(obj->light_n->light,
+			obj->light->hit = ray(cam, ray_->ray_direc[ray_->id], t1);
+			obj->light->normal = soustraction(obj->light->hit,
 			obj->sphere->sphere_p);
 			obj->obj_col = malloc(sizeof(t_vector));
 			*(obj->obj_col) = obj->sphere->sphere_col;

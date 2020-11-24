@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:02:22 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 12:06:57 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:42:26 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	trans_cy_sq_li(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 	}
 	if ((*ptr)->ptr_last->id == 4)
 	{
-		obj->light_n = (t_light *)(*ptr)->ptr_last->obj;
-		obj->light_n->light_p = addition(obj->light_n->light_p, *obj->tr);
+		obj->light = (t_light *)(*ptr)->ptr_last->obj;
+		obj->light->light_p = addition(obj->light->light_p, *obj->tr);
 		(*c_ptr)->c_ptr_last = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/21 12:03:36 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:42:48 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct	s_light
 	t_vector	light_p;
 	double		kl;
 	t_vector	color;
-	t_vector	light;
+	t_vector	hit;
 	t_vector	normal;
 	t_vector	view_direction;
 }				t_light;
@@ -103,7 +103,7 @@ typedef struct	s_shd
 typedef struct	s_object
 {
 	t_camera		*camera;
-	t_light			*light_n;
+	t_light			*light;
 	t_plan			*plan;
 	t_sphere		*sphere;
 	t_sq			*sq;

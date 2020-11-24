@@ -25,8 +25,8 @@ double hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj)
 				ray_info->t = t;
 				if(ray_info->max_d[ray_info->id] >t)
 				{
-					obj->light_n->light = ray(cam,ray_info->ray_direc[ray_info->id],t);
-					obj->light_n->normal = N;
+					obj->light->hit= ray(cam,ray_info->ray_direc[ray_info->id],t);
+					obj->light->normal = N;
 			   
 					obj->obj_col = malloc(sizeof(t_vector));
 					*(obj->obj_col) = obj->triangle->tr_col;

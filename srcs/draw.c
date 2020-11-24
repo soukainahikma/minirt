@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:17:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/22 10:11:25 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:49:44 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ t_vector		draw(t_vector ray, t_move *mv)
 	{
 		ray_info.id = 0;
 		t1 = inter(ptr, &ray_info, mv->object.camera->lookfrom, &mv->object);
+		int t2 = 0;
 		if (t1 == 1)
 		{
+			
 			color = light(mv->liste, &mv->object, mv->data, ray_info);
-			color = shadow(ptr, mv, color, ray_info);
+			color = shadow(ptr, mv, color, ray_info,&t2);
 		}
 		ptr = ptr->next;
 	}

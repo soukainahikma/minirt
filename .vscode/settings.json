@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "__locale": "c",
+        "atomic": "cpp",
+        "functional": "cpp",
+        "optional": "cpp",
+        "locale": "cpp",
+        "memory": "cpp"
+    }
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/21 19:19:44 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/24 10:50:22 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ double			hit_sq(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_cylinder(t_vector cam, t_raydata *ray_info, t_object *obj);
 t_vector		shadow(t_element *list, t_move *all, t_vector col,
-t_raydata ray);
+t_raydata ray, int *t2);
 double			inter(t_element *liste, t_raydata *ray_info,
 t_vector data, t_object *obj);
 double				check_distance(t_vector origin, t_vector light,
-t_vector object);
+t_vector object,t_vector cam);
 void			image(t_move *move);
 int				press_key(int key, t_move *move);
 int				press_mouse(int button, int x, int y, t_move *move);

@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:29:13 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/21 11:46:35 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:42:26 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	struct_2(char **info, t_data *data, t_object *obj, t_element **liste)
 {
 	if (info[0][0] == 'l')
 	{
-		obj->light_n = fill_light(info);
+		obj->light = fill_light(info);
 		if (*liste == NULL)
-			*liste = create_list(obj->light_n, 4, sizeof(t_light));
+			*liste = create_list(obj->light, 4, sizeof(t_light));
 		else
-			*liste = add_end(liste, obj->light_n, 4, sizeof(t_light));
+			*liste = add_end(liste, obj->light, 4, sizeof(t_light));
 	}
 	else if (info[0][0] == 'p' && info[0][1] == 'l')
 	{

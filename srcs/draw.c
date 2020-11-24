@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:17:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:49:44 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:30:33 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ t_vector		draw(t_vector ray, t_move *mv)
 		int t2 = 0;
 		if (t1 == 1)
 		{
-			
-			color = light(mv->liste, &mv->object, mv->data, ray_info);
-			color = shadow(ptr, mv, color, ray_info,&t2);
+			color = light(ptr, mv, ray_info);
 		}
 		ptr = ptr->next;
 	}

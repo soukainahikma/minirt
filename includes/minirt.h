@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 10:50:22 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:12:24 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,8 @@ double			norm(t_vector a);
 double			dot(t_vector a, t_vector b);
 t_vector		get_ray(t_camera *camera_, double u, double v);
 int				get_color(t_vector clr);
-t_vector		light(t_element *ptr, t_object *obj, t_data data,
-t_raydata ray_info);
-void			calculate_light(t_vector direction, t_object *obj,
-t_vector light_position);
+t_vector	light(t_element *ptr, t_move *move, t_raydata ray_);
+void		calculate_light(t_vector direction, t_object *object, t_light *light);
 t_vector		ray(t_vector origin, t_vector direction, double t);
 double			hit_sphere(t_vector cam, t_raydata *ray_info,
 t_object *obj);
@@ -86,8 +84,7 @@ double			hit_plan(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_sq(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_cylinder(t_vector cam, t_raydata *ray_info, t_object *obj);
-t_vector		shadow(t_element *list, t_move *all, t_vector col,
-t_raydata ray, int *t2);
+t_vector	shadow(t_element *list, t_move *all, t_vector col);
 double			inter(t_element *liste, t_raydata *ray_info,
 t_vector data, t_object *obj);
 double				check_distance(t_vector origin, t_vector light,

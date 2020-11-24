@@ -5,6 +5,7 @@
         "functional": "cpp",
         "optional": "cpp",
         "locale": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "string": "c"
     }
 }

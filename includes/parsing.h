@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:42:48 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 17:28:12 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct	s_light
 	t_vector	hit;
 	t_vector	normal;
 	t_vector	view_direction;
+	t_vector	r;
+	t_vector	l;
 }				t_light;
 typedef struct	s_plan
 {

@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:57:16 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:59:01 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:52:21 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,97 +20,85 @@ double			check_distance(t_vector origin, t_vector light, t_vector object,t_vecto
 	t_vector d;
 	double dt;
 
-	a = norm(soustraction(origin, light));
-	b = norm(soustraction(origin, object));
+	a = norm(soustraction(light,origin ));
+	b = norm(soustraction( object,origin));
 	c = cam;
-	d = soustraction(light,origin);
+	d = soustraction(object,light);
 	if (a >= b)
 	{
-		if(dot(c,d)<0)
+		if(dot(c,d) > 0)
 			return (1);
 	}
 	return (0);
 }
 
-void		calculate_light(t_vector direction, t_object *object, t_vector li_p)
+void		calculate_light(t_vector direction, t_object *object, t_light *light)
 {
-	
+	double	dt;
+	light->l = get_normalize(soustraction(light->light_p,light->hit));
+	dt = 2*dot(light->normal,light->l);
+	light->r = get_normalize(soustraction(multiplication(dt,light->normal),light->l));
+	light->view_direction = get_normalize(soustraction(object->camera->lookfrom,light->hit));
 }
-
-t_vector	dif_spe(t_object **object, t_light *l)
+t_vector	cal_dif(t_object *object, t_light *light)
 {
-	double		dt;
-	t_sun		sun;
-	t_vector hit;
-	t_vector	r;
+	t_vector    color;
+    double      dt;
+    dt = dot(light->normal,light->l);
+    dt = dt < 0 ? 0 : dt;
+    color.x = (object->obj_col->x / 255) * (light->color.x / 255) * dt * light->kl;
+    color.y = (object->obj_col->y / 255) * (light->color.y / 255) * dt * light->kl;
+    color.z = (object->obj_col->z / 255) * (light->color.z / 255) * dt * light->kl;
+    return (color);
+}
+t_vector	cal_spec(t_object *object, t_light *light)
+{
 	t_vector	color;
+    double		dt;
+    double		alpha;
 
-	hit = soustraction(l->light_p, (*object)->light->hit);
-	hit = get_normalize(hit);
-	color = (t_vector){0, 0, 0};
-	dt = dot(hit, (*object)->light->normal);
-	dt = dt < 0 ? 0 : dt;
-	sun.diffuse.x = ((*object)->obj_col->x / 255) * (l->color.x / 255) *
-	dt * l->kl;
-	sun.diffuse.y = ((*object)->obj_col->y / 255) * (l->color.y / 255) *
-	dt * l->kl;
-	sun.diffuse.z = ((*object)->obj_col->z / 255) * (l->color.z / 255) *
-	dt * l->kl;
-	r = soustraction(multiplication(2 * dt, (*object)->light->normal),
-	hit);
-	dt = dot(r, (*object)->light->view_direction);
-	dt = dt < 0 ? 0 : dt;
-	sun.specular.x = ((l->color.x / 255) * pow(dt, 1000));
-	sun.specular.y = ((l->color.y / 255) * pow(dt, 1000));
-	sun.specular.z = ((l->color.z / 255) * pow(dt, 1000));
-	color.x = sun.diffuse.x + sun.specular.x;
-	color.y = sun.diffuse.y + sun.specular.y;
-	color.z = sun.diffuse.z + sun.specular.z;
-	return (color);
+    alpha = 800;
+    dt = dot(light->r,light->view_direction);
+    dt = dt < 0 ? 0 : dt;
+    color.x = (light->color.x / 255) * pow(dt, alpha);
+    color.y = (light->color.y / 255) * pow(dt, alpha);
+    color.z = (light->color.z / 255) * pow(dt, alpha);
+    return (color);
+
 }
 
 t_vector	cal_am(t_object *object, t_data data)
 {
-	t_sun sun;
-
-	//object->shd_col = object->obj_col;
-	//object->shd->ks = data.am->ka;
-	sun.ambiant.x = (data.am->amb_p.x / 255) * (object->obj_col->x / 255);
-	sun.ambiant.y = (data.am->amb_p.y / 255) * (object->obj_col->y / 255);
-	sun.ambiant.z = (data.am->amb_p.z / 255) * (object->obj_col->z / 255);
-	sun.ambiant = multiplication(data.am->ka, sun.ambiant);
-	return (sun.ambiant);
+	t_vector am;
+	am.x = (data.am->amb_p.x / 255) * (object->obj_col->x / 255);
+	am.y = (data.am->amb_p.y / 255) * (object->obj_col->y / 255);
+	am.z = (data.am->amb_p.z / 255) * (object->obj_col->z / 255);
+	am = multiplication(data.am->ka, am);
+	return (am);
 }
 
-t_vector	light(t_element *ptr, t_object *object, t_data data, t_raydata ray_)
+t_vector	light(t_element *ptr, t_move *move, t_raydata ray_)
 {
-	t_sun		sun;
 	t_vector	color;
-	t_vector    test;
-	t_vector	hit;
-	t_element	*liste;
+	t_element	*list;
 	t_light		*l;
-
-	liste = ptr;
-	color = (t_vector){0, 0, 0};
-	test = (t_vector){0, 0, 0};
-	color = cal_am(object, data);
-	if (object->light->kl == 0)
-		return (color);
-	object->light->view_direction = soustraction(object->camera->lookfrom,(object->light->hit));
-	object->light->view_direction = get_normalize(object->light->view_direction);
-	object->light->normal = get_normalize(object->light->normal);
-	l = (t_light *)malloc(sizeof(t_light));
-	while (liste != NULL)
+	color = (t_vector){0,0,0};
+	color = cal_am(&move->object,move->data);
+	list =move->liste;
+	move->object.light->normal = get_normalize(move->object.light->normal);
+	while(list != NULL)
 	{
-		if (liste->id == 4)
+		if(list->id == 4)
 		{
-			l = (t_light*)liste->obj;
-			
-			test = addition(test, dif_spe(&object, l));
+			l = (t_light *)list->obj;
+			l->hit = move->object.light->hit;
+			l->normal = move->object.light->normal;
+			calculate_light(ray_.ray_direc[0],&move->object,l);
+			color = addition(color,cal_spec(&move->object,l));
+			color = addition(color,cal_dif(&move->object,l));
 		}
-		liste = liste->next;
+		list = list->next;
 	}
-	color = addition(color, test);
-	return (color);
+	color = shadow(ptr, move, color);
+	return(color);
 }

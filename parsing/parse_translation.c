@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:02:22 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:42:26 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:36:38 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,16 @@ void	trans_pl_cam(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 
 void	translate(char **str, t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
-	if (str[0][0] == 't' && str[0][1] == 'r' && str[0][2] == 'a')
+	if (str[0][0] == 't' && str[0][1] == 'a')
 	{
-		obj->tr = fill_translation(str);
-		trans_cy_sq_li(obj, c_ptr, ptr);
-		trans_sp_tr(obj, c_ptr, ptr);
-		trans_pl_cam(obj, c_ptr, ptr);
+		if ((*ptr)->ptr_last)
+		{
+			obj->tr = fill_translation(str);
+			trans_cy_sq_li(obj, c_ptr, ptr);
+			trans_sp_tr(obj, c_ptr, ptr);
+			trans_pl_cam(obj, c_ptr, ptr);
+		}
+		else
+			my_file(-300, 0);
 	}
 }

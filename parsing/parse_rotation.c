@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:21:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 12:30:16 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:36:32 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,15 @@ void	rot_pl_cam(t_object *o, t_cam_elm **c_ptr, t_element **ptr)
 
 void	rotate(char **info, t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
-	if (info[0][0] == 'r' && info[0][1] == 'o' && info[0][2] == 't')
+	if (info[0][0] == 'r' && info[0][1] == 'o')
 	{
-		obj->rot = fill_rotation(info);
-		rot_cy_sq(obj, c_ptr, ptr);
-		rot_pl_cam(obj, c_ptr, ptr);
+		if ((*ptr)->ptr_last)
+		{
+			obj->rot = fill_rotation(info);
+			rot_cy_sq(obj, c_ptr, ptr);
+			rot_pl_cam(obj, c_ptr, ptr);
+		}
+		else
+			my_file(-300, 0);
 	}
 }

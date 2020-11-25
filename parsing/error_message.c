@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:27:17 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 12:18:02 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:10:44 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void	error_4(int error, char **str)
 		(*str) = "ERROR 92: invalid sq normal \n";
 	if (error == 93)
 		(*str) = "ERROR 93: invalid sq size side \n";
+	if (error == -300)
+		(*str) = "Warning -300: wrong translation or rotation? \n";
 }
 
 int		my_file(int error, int i)
@@ -138,6 +140,8 @@ int		my_file(int error, int i)
 		str = "ERROR 102: invalid triangle second point side \n";
 	if (error == 103)
 		str = "ERROR 103: invalid triangle third point \n";
+	if (error == -13)
+		str = "ERROR -13: no ambiant \n";
 	ft_putstr_fd("Error\n", 2);
 	if (i != 0)
 	{

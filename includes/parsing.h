@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 14:32:49 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:51:15 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ int				sq_checker(char *str);
 int				tr_checker(char *str);
 int				tra_checker(char *str);
 int				rot_checker(char *str);
-double  ft_atof(char *s);
-int	mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
+double			ft_atof(char *s);
+int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
+int				just_checking(int *er, int error);
 #endif

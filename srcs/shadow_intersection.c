@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:17:37 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 11:47:47 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 17:48:17 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int call_light(t_element *liste_light,t_element *list_obj,t_move *all,t_raydata 
 	t_vector n;
 	
 	n = multiplication(1e-4f, all->sh_d);
-	
 	list = liste_light;
 	new_start = addition(all->new_start,n);
 	while(list != NULL)
@@ -49,7 +48,9 @@ int call_light(t_element *liste_light,t_element *list_obj,t_move *all,t_raydata 
 t_vector	shadow(t_element *list, t_move *all, t_vector col,t_raydata *ray_)
 {
 	t_element *list_obj;
-	
+	t_vector	shadow_col;
+
+	shadow_col = multiplication((double)1/255,*(all->object).obj_col);
 	ray_->id = 1;
 	all->sh_d = all->object.light->normal;
 	all->new_start = all->object.light->hit;
@@ -60,7 +61,7 @@ t_vector	shadow(t_element *list, t_move *all, t_vector col,t_raydata *ray_)
 		if(list_obj != list)
 		{
 			if(call_light(all->liste,list_obj,all,ray_) == 1)
-				return((t_vector){0,0,0});
+				return(multiplication(all->data.am->ka,shadow_col));
 		}
 		list_obj = list_obj->next;
 	}

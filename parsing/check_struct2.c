@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:59:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 14:30:03 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:45:51 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,15 @@ int	cam_checker(char *str, int **error_nb)
 		return (43);
 	(*error_nb)[2]++;
 	return (0);
+}
+
+int	just_checking(int *er, int error)
+{
+	if (er[0] == 0)
+		return (my_file(-8, 0));
+	if (er[1] == 0)
+		return (my_file(-13, 0));
+	if (er[2] == 0)
+		return (my_file(-9, 0));
+	return (error);
 }

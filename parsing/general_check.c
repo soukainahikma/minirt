@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 09:44:40 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 10:10:13 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:33:58 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_extention(char *str)
 		if (*str++ == '.')
 			break ;
 	}
-	if (ft_strncmp(str, t, 2) == 0)
+	if (ft_strncmp(str, t, 2) == 0 && ft_strlen(str) == 2)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:11:42 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 14:37:17 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:37:26 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_resolution	*fill_resolution(char **t)
 {
 	t_resolution *res;
-	
+
 	res = (t_resolution *)malloc(sizeof(t_resolution));
 	res->w = ft_atof(t[1]);
 	res->h = ft_atof(t[2]);

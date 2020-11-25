@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:57:16 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 11:27:19 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 17:55:51 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ double			check_distance(t_vector origin, t_vector light, t_vector object,t_vecto
 	b = norm(d);
 	if (a > b && dot(c,d) > 0 )
 	{
+		if(dot(cam,(soustraction(light,origin))) < 0)
 			return (1);
 	}
 	return (0);
@@ -90,11 +91,14 @@ t_vector	light(t_element *ptr, t_move *move, t_raydata *ray_)
 		if(list->id == 4)
 		{
 			l = (t_light *)list->obj;
+			if(l->kl != 0)
+			{
 			l->hit = move->object.light->hit;
 			l->normal = move->object.light->normal;
 			calculate_light(ray_->ray_direc[0],&move->object,l);
 			color = addition(color,cal_spec(&move->object,l));
 			color = addition(color,cal_dif(&move->object,l));
+			}
 		}
 		list = list->next;
 	}

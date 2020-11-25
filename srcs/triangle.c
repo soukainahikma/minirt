@@ -23,10 +23,13 @@ double hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj)
 			if(t>=1e-4f)
 			{
 				ray_info->t = t;
-				if(ray_info->max_d[ray_info->id] >t)
+				if(ray_info->max_d[ray_info->id] > t)
 				{
 					obj->light->hit= ray(cam,ray_info->ray_direc[ray_info->id],t);
-					obj->light->normal = N;
+					if (dot(ray_info->ray_direc[ray_info->id],N) <= 0)
+						obj->light->normal = N;
+					else
+						obj->light->normal = multiplication(-1,N);
 			   
 					obj->obj_col = malloc(sizeof(t_vector));
 					*(obj->obj_col) = obj->triangle->tr_col;

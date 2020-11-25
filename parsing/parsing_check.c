@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:52:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 02:05:50 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/25 19:48:30 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,9 @@ int		check_struct(char *str, int *error_nb, char **info)
 		return (sq_checker(str));
 	else if (info[0][0] == 't' && info[0][1] == 'r' && ft_strlen(info[0]) == 2)
 		return (tr_checker(str));
-	else if (info[0][0] == 't' && info[0][1] == 'r' &&
-		info[0][2] == 'a' && ft_strlen(info[0]) == 3)
+	else if (info[0][0] == 't' && info[0][1] == 'a' && ft_strlen(info[0]) == 2)
 		return (tra_checker(str));
-	else if (info[0][0] == 'r' && info[0][1] == 'o' &&
-		info[0][2] == 't' && ft_strlen(info[0]) == 3)
+	else if (info[0][0] == 'r' && info[0][1] == 'o' && ft_strlen(info[0]) == 2)
 		return (rot_checker(str));
 	return (-1);
 }
@@ -102,9 +100,5 @@ int		parsing_check(int error, char **str, int argc, int *error_nb)
 		if (error != 0)
 			return (my_file(error, rest_i[1]));
 	}
-	if (error_nb[0] == 0)
-		return (my_file(-8, 0));
-	if (error_nb[2] == 0)
-		return (my_file(-9, 0));
-	return (error);
+	return (just_checking(error_nb, error));
 }

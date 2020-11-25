@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_intensity.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:57:16 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 08:06:15 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/25 11:27:19 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ double			check_distance(t_vector origin, t_vector light, t_vector object,t_vecto
 	d=soustraction( object,origin);
 	a = norm(c);
 	b = norm(d);
-	if (a >= b && dot(c,d)>0)
+	if (a > b && dot(c,d) > 0 )
 	{
 			return (1);
 	}
@@ -76,7 +76,7 @@ t_vector	cal_am(t_object *object, t_data data)
 	return (am);
 }
 
-t_vector	light(t_element *ptr, t_move *move, t_raydata ray_)
+t_vector	light(t_element *ptr, t_move *move, t_raydata *ray_)
 {
 	t_vector	color;
 	t_element	*list;
@@ -92,12 +92,12 @@ t_vector	light(t_element *ptr, t_move *move, t_raydata ray_)
 			l = (t_light *)list->obj;
 			l->hit = move->object.light->hit;
 			l->normal = move->object.light->normal;
-			calculate_light(ray_.ray_direc[0],&move->object,l);
+			calculate_light(ray_->ray_direc[0],&move->object,l);
 			color = addition(color,cal_spec(&move->object,l));
 			color = addition(color,cal_dif(&move->object,l));
 		}
 		list = list->next;
 	}
-	color = shadow(ptr, move, color);
+	color = shadow(ptr, move, color,ray_);
 	return(color);
 }

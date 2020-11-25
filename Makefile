@@ -55,6 +55,7 @@ OBJECT = $(SRC:.c=.o)
 
 $(NAME): $(OBJECT)
 	@$(AR) $(NAME) $(OBJECT)
+	@gcc $(FLAGS)  -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit  minirt.a
 
 %.o: %.c
 	@gcc $(FLAGS) -I $(HEADERS)  -o $@ -c $<

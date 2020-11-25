@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 01:46:12 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/25 11:24:32 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ typedef struct	s_move
 	t_element	*liste;
 	t_cam_elm	*c_liste;
 	t_element	*ptr;
+	t_vector	new_start;
 	int			button;
 	int			bmp;
+	t_vector	sh_d;
 }				t_move;
 
 t_vector		addition(t_vector a, t_vector b);
@@ -75,7 +77,7 @@ double			norm(t_vector a);
 double			dot(t_vector a, t_vector b);
 t_vector		get_ray(t_camera *camera_, double u, double v);
 int				get_color(t_vector clr);
-t_vector	light(t_element *ptr, t_move *move, t_raydata ray_);
+t_vector	light(t_element *ptr, t_move *move, t_raydata *ray_);
 void		calculate_light(t_vector direction, t_object *object, t_light *light);
 t_vector		ray(t_vector origin, t_vector direction, double t);
 double			hit_sphere(t_vector cam, t_raydata *ray_info,
@@ -84,7 +86,7 @@ double			hit_plan(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_sq(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj);
 double			hit_cylinder(t_vector cam, t_raydata *ray_info, t_object *obj);
-t_vector	shadow(t_element *list, t_move *all, t_vector col);
+t_vector	shadow(t_element *list, t_move *all, t_vector col,t_raydata *ray_);
 double			inter(t_element *liste, t_raydata *ray_info,
 t_vector data, t_object *obj);
 double				check_distance(t_vector origin, t_vector light,

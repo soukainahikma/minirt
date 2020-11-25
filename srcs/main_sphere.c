@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 14:06:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:42:26 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:20:24 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		main(int argc, char **argv)
 {
 	t_move	move;
 	int		error_nb[3];
+	int a;
+	int b;
 
 	move.liste = NULL;
 	move.c_liste = NULL;
@@ -45,4 +47,6 @@ int		main(int argc, char **argv)
 		mlx_put_image_to_window(move.w.mlx_ptr, move.w.win_ptr, move.w.img_ptr, 0, 0);
 		mlx_loop(move.w.mlx_ptr);
 	}
+	mlx_get_screen_size(move.w.mlx_ptr, &a, &b);
+	printf("|%d|\t|%d|\n",a,b);
 }

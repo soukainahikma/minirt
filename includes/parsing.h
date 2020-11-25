@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 01:46:17 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:05:03 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,4 +205,5 @@ int				tr_checker(char *str);
 int				tra_checker(char *str);
 int				rot_checker(char *str);
 double  ft_atof(char *s);
+int	mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 #endif

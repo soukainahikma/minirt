@@ -1,5 +1,6 @@
 NAME = minirt.a
 AR = ar rcs
+LMLX_FLAG= -L ./minilibx_opengl_20191021 libmlx.a -L ./minilibx_mms_20200219 libmlx.dylib -framework OpenGL -framework AppKit
 FLAGS =  
 SRC  =	srcs/intersection.c\
 		srcs/ray.c\
@@ -47,24 +48,30 @@ SRC  =	srcs/intersection.c\
 		parsing/parse_translation.c\
 		parsing/parse_rotation.c\
 
-	#gcc -Wall -Werror -Wextra -std=gnu99 -I. -g -lm -lGLEW -lglfw -lGL ${OBJS} minilibx/libmlx_Linux.a -o ${NAME}
 
 
 HEADERS = ./includes/
 OBJECT = $(SRC:.c=.o)
+MLX_MMS = ./minilibx_mms_20200219
+MLX_OGL = ./minilibx_opengl_20191021 
 
 $(NAME): $(OBJECT)
+	make -sC $(MLX_MMS) 
+	make -sC $(MLX_OGL) 
 	@$(AR) $(NAME) $(OBJECT)
-	@gcc $(FLAGS)  -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit  minirt.a
+	@cp ./minilibx_mms_20200219/libmlx.dylib .
+	@gcc $(FLAGS)  -I /usr/local/include -L ./minilibx_opengl_20191021 libmlx.dylib -lmlx -framework OpenGl -framework AppKit  minirt.a
 
 %.o: %.c
 	@gcc $(FLAGS) -I $(HEADERS)  -o $@ -c $<
 
-all: $(NAME)
-
+all: $(NAME) 
+	
 clean:
 	@rm -f $(OBJECT)
-
+	@make clean -sC $(MLX_MMS) 
+	@make clean -sC $(MLX_OGL) 
+	@rm -f libmlx.dylib
 fclean: clean
 	@rm -f $(NAME)
 

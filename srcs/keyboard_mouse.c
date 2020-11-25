@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_mouse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 12:07:28 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/21 18:25:20 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/25 13:01:39 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			press_key(int key, t_move *move)
 {
 	if (key == 53 || key == 12)
 		exit(0);
-	if (key == 124 && move->button == 3 && move->c_liste->next != NULL)
+	if (key == 124 && move->button == 1 && move->c_liste->next != NULL)
 	{
 		move->c_liste = move->c_liste->next;
 		move->object.camera = move->c_liste->cam;
@@ -57,7 +57,7 @@ int			press_key(int key, t_move *move)
 		mlx_put_image_to_window(move->w.mlx_ptr, move->w.win_ptr,
 		move->w.img_ptr, 0, 0);
 	}
-	if (key == 123 && move->button == 3 && move->c_liste->prev != NULL)
+	if (key == 123 && move->button == 1 && move->c_liste->prev != NULL)
 	{
 		move->c_liste = move->c_liste->prev;
 		move->object.camera = move->c_liste->cam;

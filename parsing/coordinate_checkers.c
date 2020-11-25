@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate_checkers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:48:55 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:31:46 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	check_kl_ka_fov_res(int id, char *t)
 	}
 	if (id == 3)
 	{
-		if (is_int(t) == 1 && ft_atof(t) >= 0)
+		if (is_int(t) == 1 && ft_atof(t) > 0)
 			return (1);
 		else
 			return (0);

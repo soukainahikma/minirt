@@ -6,11 +6,19 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 14:06:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 14:20:24 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:48:14 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void resize(int a,int b,t_move *move)
+{
+	if(b < move->data.res->h)
+		move->data.res->h = b;
+	if(a < move->data.res->w)
+		move->data.res->w = a;
+}
 
 int		main(int argc, char **argv)
 {
@@ -22,6 +30,7 @@ int		main(int argc, char **argv)
 	move.liste = NULL;
 	move.c_liste = NULL;
 	move.bmp = 0;
+	
 	if (parsing_check(0, argv, argc, error_nb) != 0)
 		return (0);
 	move.object.light = (t_light *)malloc(sizeof(t_light));
@@ -29,6 +38,8 @@ int		main(int argc, char **argv)
 	move.object.light->kl = 0;
 	move.object.light->light_p = (t_vector){0, 0, 0};
 	parsing(&move, &move.liste, &move.c_liste, argv[1]);
+	mlx_get_screen_size(move.w.mlx_ptr, &a, &b);
+	resize(a,b,&move);
 	if (argc == 3 && ft_strncmp(argv[2], "--save", 6) == 0)
 		move.bmp = 1;
 	move.w.mlx_ptr = mlx_init();
@@ -47,6 +58,6 @@ int		main(int argc, char **argv)
 		mlx_put_image_to_window(move.w.mlx_ptr, move.w.win_ptr, move.w.img_ptr, 0, 0);
 		mlx_loop(move.w.mlx_ptr);
 	}
-	mlx_get_screen_size(move.w.mlx_ptr, &a, &b);
-	printf("|%d|\t|%d|\n",a,b);
+	
+	
 }

@@ -56,8 +56,8 @@ MLX_MMS = ./minilibx_mms_20200219
 MLX_OGL = ./minilibx_opengl_20191021 
 
 $(NAME): $(OBJECT)
-	make -sC $(MLX_MMS) 
-	make -sC $(MLX_OGL) 
+	@make -sC $(MLX_MMS) 
+	@make -sC $(MLX_OGL) 
 	@$(AR) $(NAME) $(OBJECT)
 	@cp ./minilibx_mms_20200219/libmlx.dylib .
 	@gcc $(FLAGS)  -I /usr/local/include -L ./minilibx_opengl_20191021 libmlx.dylib -lmlx -framework OpenGl -framework AppKit  minirt.a

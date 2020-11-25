@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 08:48:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 08:51:42 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_camera	*fill_camera(char **t)
 	t1 = ft_split(t[1], ',');
 	t2 = ft_split(t[2], ',');
 	cam = (t_camera *)malloc(sizeof(t_camera));
-	cam->lookfrom.x = atof(t1[0]);
-	cam->lookfrom.y = atof(t1[1]);
-	cam->lookfrom.z = atof(t1[2]);
-	cam->cam_d.x = atof(t2[0]);
-	cam->cam_d.y = atof(t2[1]);
-	cam->cam_d.z = atof(t2[2]);
-	cam->fov = atof(t[3]);
+	cam->lookfrom.x = ft_atof(t1[0]);
+	cam->lookfrom.y = ft_atof(t1[1]);
+	cam->lookfrom.z = ft_atof(t1[2]);
+	cam->cam_d.x = ft_atof(t2[0]);
+	cam->cam_d.y = ft_atof(t2[1]);
+	cam->cam_d.z = ft_atof(t2[2]);
+	cam->fov = ft_atof(t[3]);
 	return (cam);
 }

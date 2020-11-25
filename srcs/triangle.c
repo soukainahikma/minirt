@@ -12,7 +12,7 @@ double hit_triangle(t_vector cam, t_raydata *ray_info, t_object *obj)
 	t_vector N = cross(edge0,edge1);
 	N = get_normalize( N);
 	denominateur = dot(ray_info->ray_direc[ray_info->id],N);
-	if(fabs(denominateur)>1e-4f)
+	if(ft_fabs(denominateur)>1e-4f)
 	{
 		t = -dot(soustraction(cam, obj->triangle->tr_p1),N)/denominateur;
 		t_vector C0 = soustraction(ray(cam,ray_info->ray_direc[ray_info->id],t) , obj->triangle->tr_p1); 

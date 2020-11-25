@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_plan.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:06:04 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 09:07:17 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ t_plan	*fill_plan(char **t)
 	t1 = ft_split(t[1], ',');
 	t2 = ft_split(t[2], ',');
 	t3 = ft_split(t[3], ',');
-	object->plan_p.x = atof(t1[0]);
-	object->plan_p.y = atof(t1[1]);
-	object->plan_p.z = atof(t1[2]);
-	object->plan_d.x = atof(t2[0]);
-	object->plan_d.y = atof(t2[1]);
-	object->plan_d.z = atof(t2[2]);
-	object->plan_col.x = atof(t3[0]);
-	object->plan_col.y = atof(t3[1]);
-	object->plan_col.z = atof(t3[2]);
+	object->plan_p.x = ft_atof(t1[0]);
+	object->plan_p.y = ft_atof(t1[1]);
+	object->plan_p.z = ft_atof(t1[2]);
+	object->plan_d.x = ft_atof(t2[0]);
+	object->plan_d.y = ft_atof(t2[1]);
+	object->plan_d.z = ft_atof(t2[2]);
+	object->plan_col.x = ft_atof(t3[0]);
+	object->plan_col.y = ft_atof(t3[1]);
+	object->plan_col.z = ft_atof(t3[2]);
 	return (object);
 }

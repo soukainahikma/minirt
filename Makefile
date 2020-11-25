@@ -18,6 +18,7 @@ SRC  =	srcs/intersection.c\
 		srcs/draw.c\
 		srcs/keyboard_mouse.c\
 		srcs/bmp.c\
+		srcs/ft_atof.c\
 		\
 		parsing/fill_ambiant.c\
 		parsing/fill_light.c \
@@ -54,7 +55,6 @@ OBJECT = $(SRC:.c=.o)
 
 $(NAME): $(OBJECT)
 	@$(AR) $(NAME) $(OBJECT)
-	@gcc $(FLAGS)  -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit  minirt.a
 
 %.o: %.c
 	@gcc $(FLAGS) -I $(HEADERS)  -o $@ -c $<

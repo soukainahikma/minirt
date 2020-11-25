@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 17:28:12 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 01:46:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,4 +204,5 @@ int				sq_checker(char *str);
 int				tr_checker(char *str);
 int				tra_checker(char *str);
 int				rot_checker(char *str);
+double  ft_atof(char *s);
 #endif

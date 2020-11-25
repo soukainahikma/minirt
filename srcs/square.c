@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 12:10:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:44:58 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 00:59:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ double	hit_sq(t_vector cam, t_raydata *ray_, t_object *obj)
 	denominateur = dot(ray_->ray_direc[ray_->id], obj->sq->sq_d);
 	oc = soustraction(cam, obj->sq->sq_p);
 	b = -dot(oc, obj->sq->sq_d);
-	if (fabs(denominateur) > 1e-4f)
+	if (ft_fabs(denominateur) > 1e-4f)
 	{
 		t = b / denominateur;
 		oc = soustraction(obj->sq->sq_p,
 		ray(cam, ray_->ray_direc[ray_->id], t));
-		if (fabs(dot(oc,u)/ (double)(obj->sq->side_size / 2)) <= 1 
-		&& fabs(dot(oc,v)/(double)(obj->sq->side_size / 2)) <= 1 && t >= 1e-4f)
+		if (ft_fabs(dot(oc,u)/ (double)(obj->sq->side_size / 2)) <= 1 
+		&& ft_fabs(dot(oc,v)/(double)(obj->sq->side_size / 2)) <= 1 && t >= 1e-4f)
 		{
 			ray_->t = t;
 			if (ray_->max_d[ray_->id] > t)

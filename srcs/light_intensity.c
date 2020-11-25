@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_intensity.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:57:16 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 20:52:21 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 08:06:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ double			check_distance(t_vector origin, t_vector light, t_vector object,t_vecto
 	t_vector d;
 	double dt;
 
-	a = norm(soustraction(light,origin ));
-	b = norm(soustraction( object,origin));
-	c = cam;
-	d = soustraction(object,light);
-	if (a >= b)
+	c=soustraction(light,origin );
+	d=soustraction( object,origin);
+	a = norm(c);
+	b = norm(d);
+	if (a >= b && dot(c,d)>0)
 	{
-		if(dot(c,d) > 0)
 			return (1);
 	}
 	return (0);

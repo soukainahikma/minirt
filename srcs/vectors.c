@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   vectors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 13:20:25 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/13 13:26:28 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 00:57:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+double	ft_fabs(double t)
+{
+	if (t < 0)
+		return (-t);
+	return (t);
+}
 double		dot(t_vector a, t_vector b)
 {
 	double result;

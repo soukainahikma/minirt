@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 19:12:24 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/25 01:46:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,6 @@ void			parsing(t_move *move, t_element **ptr, t_cam_elm **c_ptr,
 char *str);
 t_bmp			init_bmph(t_move move);
 int				save_bmp_image(t_move	move);
+double			ft_fabs(double t);
+
 #endif

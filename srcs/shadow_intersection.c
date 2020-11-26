@@ -6,13 +6,31 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:17:37 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 17:48:17 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/26 20:40:50 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+double			check_distance(t_vector origin, t_vector light, t_vector object,t_vector cam)
+{
+	double	a;
+	double	b;
+	t_vector c;
+	t_vector d;
+	double dt;
 
+	c=soustraction(light,origin );
+	d=soustraction( object,origin);
+	a = norm(c);
+	b = norm(d);
+	if (a > b && dot(c,d) > 0 )
+	{
+		if(dot(cam,(soustraction(light,origin))) < 0)
+			return (1);
+	}
+	return (0);
+}
 int call_light(t_element *liste_light,t_element *list_obj,t_move *all,t_raydata *ray)
 {
 	

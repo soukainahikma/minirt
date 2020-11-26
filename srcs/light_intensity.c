@@ -3,34 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light_intensity.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:57:16 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 13:04:57 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/26 20:40:41 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double			check_distance(t_vector origin, t_vector light, t_vector object,t_vector cam)
-{
-	double	a;
-	double	b;
-	t_vector c;
-	t_vector d;
-	double dt;
 
-	c=soustraction(light,origin );
-	d=soustraction( object,origin);
-	a = norm(c);
-	b = norm(d);
-	if (a > b && dot(c,d) > 0 )
-	{
-		if(dot(cam,(soustraction(light,origin))) < 0)
-			return (1);
-	}
-	return (0);
-}
 
 void		calculate_light(t_vector direction, t_object *object, t_light *light)
 {

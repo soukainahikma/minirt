@@ -6,18 +6,19 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 13:20:25 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 14:11:41 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/26 19:40:59 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	ft_fabs(double t)
+double		ft_fabs(double t)
 {
 	if (t < 0)
 		return (-t);
 	return (t);
 }
+
 double		dot(t_vector a, t_vector b)
 {
 	double result;

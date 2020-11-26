@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate_checkers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:48:55 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 12:31:06 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/26 18:27:10 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	check_color(char *t)
 	char **t1;
 
 	t1 = ft_split(t, ',');
-	if(is_2_commas(t) != 1)
-		return(0);
+	if (is_2_commas(t) != 1)
+		return (0);
 	if (0 > ft_atof(t1[0]) || 0 > ft_atof(t1[1]) || 0 > ft_atof(t1[2])
 	|| 255 < ft_atof(t1[0]) || 255 < ft_atof(t1[1]) || 255 < ft_atof(t1[2]))
 		return (0);

@@ -20,6 +20,7 @@ SRC  =	srcs/intersection.c\
 		srcs/keyboard_mouse.c\
 		srcs/bmp.c\
 		srcs/ft_atof.c\
+		srcs/zprint.c\
 		\
 		parsing/fill_ambiant.c\
 		parsing/fill_light.c \
@@ -59,8 +60,9 @@ $(NAME): $(OBJECT)
 	@make -sC $(MLX_MMS) 
 	@make -sC $(MLX_OGL) 
 	@$(AR) $(NAME) $(OBJECT)
+	@cp ./minilibx_opengl_20191021/libmlx.a .
 	@cp ./minilibx_mms_20200219/libmlx.dylib .
-	@gcc $(FLAGS)  -I /usr/local/include -L ./minilibx_opengl_20191021 libmlx.dylib -lmlx -framework OpenGl -framework AppKit  minirt.a
+	@gcc $(FLAGS)  -I /usr/local/include -L ./minilibx_opengl_20191021 libmlx.a libmlx.dylib -lmlx -framework OpenGl -framework AppKit  minirt.a
 
 %.o: %.c
 	@gcc $(FLAGS) -I $(HEADERS)  -o $@ -c $<
@@ -72,6 +74,8 @@ clean:
 	@make clean -sC $(MLX_MMS) 
 	@make clean -sC $(MLX_OGL) 
 	@rm -f libmlx.dylib
+	@rm -f libmlx.a
+
 fclean: clean
 	@rm -f $(NAME)
 

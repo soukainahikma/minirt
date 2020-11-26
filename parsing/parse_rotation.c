@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rotation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:21:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 13:49:10 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/26 18:29:00 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rot_cy_sq(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
-	if ((*ptr)->ptr_last  &&(*ptr)->ptr_last->id == 8)
-	{	
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 8)
+	{
 		obj->cy = (t_cylindre *)(*ptr)->ptr_last->obj;
 		obj->cy->cy_d = rot_x(obj->cy->cy_d, obj->rot->x * M_PI / 180);
 		obj->cy->cy_d = rot_y(obj->cy->cy_d, obj->rot->y * M_PI / 180);
@@ -57,7 +57,6 @@ void	rotate(char **info, t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 	{
 		if ((*ptr)->ptr_last != NULL || (*c_ptr)->c_ptr_last != NULL)
 		{
-			
 			obj->rot = fill_rotation(info);
 			rot_cy_sq(obj, c_ptr, ptr);
 			rot_pl_cam(obj, c_ptr, ptr);

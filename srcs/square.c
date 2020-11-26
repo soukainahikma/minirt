@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 12:10:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 00:59:37 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/26 19:39:18 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		sq_cal(t_vector cam, t_raydata *ray_, t_object *obj)
 {
-	obj->light->hit= ray(cam, ray_->ray_direc[ray_->id], ray_->t);
+	obj->light->hit = ray(cam, ray_->ray_direc[ray_->id], ray_->t);
 	if (dot(ray_->ray_direc[ray_->id], obj->sq->sq_d) <= 0)
 		obj->light->normal = obj->sq->sq_d;
 	else
@@ -31,29 +31,25 @@ double	hit_sq(t_vector cam, t_raydata *ray_, t_object *obj)
 	double		denominateur;
 	double		b;
 	t_vector	oc;
-	
-	t_vector	u;
-	t_vector	v;
-	
+	t_vector	vec[2];
+
 	obj->sq->sq_d = get_normalize(obj->sq->sq_d);
-	u = cross((t_vector){0,1,0},obj->sq->sq_d);
-	v = cross(obj->sq->sq_d,u);
-	
+	vec[0] = cross((t_vector){0, 1, 0}, obj->sq->sq_d);
+	vec[1] = cross(obj->sq->sq_d, vec[0]);
 	denominateur = dot(ray_->ray_direc[ray_->id], obj->sq->sq_d);
 	oc = soustraction(cam, obj->sq->sq_p);
 	b = -dot(oc, obj->sq->sq_d);
-	if (ft_fabs(denominateur) > 1e-4f)
+	if (ft_fabs(denominateur) == 1e-4f)
+		return (0);
+	t = b / denominateur;
+	oc = soustraction(obj->sq->sq_p,
+	ray(cam, ray_->ray_direc[ray_->id], t));
+	if (ft_fabs(dot(oc, vec[0]) / (double)(obj->sq->side_size / 2)) <= 1 &&
+	ft_fabs(dot(oc, vec[1]) / (double)(obj->sq->side_size / 2)) <= 1 && t >= 0)
 	{
-		t = b / denominateur;
-		oc = soustraction(obj->sq->sq_p,
-		ray(cam, ray_->ray_direc[ray_->id], t));
-		if (ft_fabs(dot(oc,u)/ (double)(obj->sq->side_size / 2)) <= 1 
-		&& ft_fabs(dot(oc,v)/(double)(obj->sq->side_size / 2)) <= 1 && t >= 1e-4f)
-		{
-			ray_->t = t;
-			if (ray_->max_d[ray_->id] > t)
-				return (sq_cal(cam, ray_, obj));
-		}
+		ray_->t = t;
+		if (ray_->max_d[ray_->id] > t)
+			return (sq_cal(cam, ray_, obj));
 	}
 	return (0);
 }

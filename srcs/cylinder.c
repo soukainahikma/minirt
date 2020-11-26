@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 09:53:19 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 00:19:47 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/26 14:01:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ double	calculate_cyt(t_vector cam, t_object *obj, t_vector oc, t_raydata *ray)
 	dot(oc, obj->cy->cy_d);
 	obj->cy->m2 = dot(ray->ray_direc[ray->id], obj->cy->cy_d) * t2 +
 	dot(oc, obj->cy->cy_d);
-	if (obj->cy->m1 >= 0 && obj->cy->m1 <= obj->cy->h)
+	if (obj->cy->m1 >= -obj->cy->h/2 && obj->cy->m1 <= obj->cy->h/2)
 		obj->cy->m2 = obj->cy->m1;
 	if (t2 > t1)
 		t2 = t1;
@@ -49,8 +49,8 @@ double	hit_cylinder(t_vector cam, t_raydata *ray_, t_object *obj)
 	obj->cy->cy_d = get_normalize(obj->cy->cy_d);
 	oc = soustraction(cam, obj->cy->cy_p);
 	t2 = calculate_cyt(cam, obj, oc, ray_);
-	if (t2 != 0 && obj->cy->m2 >= 0
-	&& obj->cy->m2 <= obj->cy->h)
+	if (t2 != 0 && obj->cy->m2 >= -obj->cy->h/2
+	&& obj->cy->m2 <= obj->cy->h/2)
 	{
 		ray_->t = t2;
 		if (ray_->max_d[ray_->id] > t2 && t2 >= 0)

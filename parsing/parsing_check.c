@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:52:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 19:48:30 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/26 14:13:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		parsing_check(int error, char **str, int argc, int *error_nb)
 			return (my_file(-3, rest_i[1]));
 		rest_i[1]++;
 		if (nb_word(line) == 0)
-			return (my_file(-2, rest_i[1]));
+			continue;
 		error = check_struct(line, error_nb, ft_split_whitespaces(line));
 		if (error != 0)
 			return (my_file(error, rest_i[1]));

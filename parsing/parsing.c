@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 13:21:51 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 12:32:57 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/26 14:17:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	parsing(t_move *move, t_element **ptr, t_cam_elm **c_ptr, char *str)
 	while (rest == 1)
 	{
 		rest = get_next_line(fd, &line);
-		if (line[0] == '\0')
+		if (nb_word(line) == 0)
 			continue;
 		t = ft_split_whitespaces(line);
 		fill_struct(t, &move->data, &move->object, ptr);

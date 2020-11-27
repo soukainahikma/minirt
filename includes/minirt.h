@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 19:50:47 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/27 10:23:28 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ char *str);
 t_bmp			init_bmph(t_move move);
 int				save_bmp_image(t_move	move);
 double			ft_fabs(double t);
+void			escape(int key, t_move *move);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:02:22 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 19:36:38 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/27 10:00:39 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	trans_cy_sq_li(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
-	if ((*ptr)->ptr_last->id == 8)
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 8)
 	{
 		obj->cy = (t_cylindre *)(*ptr)->ptr_last->obj;
 		obj->cy->cy_p = addition(obj->cy->cy_p, *obj->tr);
 		(*c_ptr)->c_ptr_last = NULL;
 	}
-	if ((*ptr)->ptr_last->id == 7)
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 7)
 	{
 		obj->sq = (t_sq *)(*ptr)->ptr_last->obj;
 		obj->sq->sq_p = addition(obj->sq->sq_p, *obj->tr);
 		(*c_ptr)->c_ptr_last = NULL;
 	}
-	if ((*ptr)->ptr_last->id == 4)
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 4)
 	{
 		obj->light = (t_light *)(*ptr)->ptr_last->obj;
 		obj->light->light_p = addition(obj->light->light_p, *obj->tr);
@@ -36,13 +36,13 @@ void	trans_cy_sq_li(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 
 void	trans_sp_tr(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
-	if ((*ptr)->ptr_last->id == 6)
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 6)
 	{
 		obj->sphere = (t_sphere *)(*ptr)->ptr_last->obj;
 		obj->sphere->sphere_p = addition(obj->sphere->sphere_p, *obj->tr);
 		(*c_ptr)->c_ptr_last = NULL;
 	}
-	if ((*ptr)->ptr_last->id == 9)
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 9)
 	{
 		obj->triangle = (t_triangle *)(*ptr)->ptr_last->obj;
 		obj->triangle->tr_p1 = addition(obj->triangle->tr_p1, *obj->tr);
@@ -54,7 +54,7 @@ void	trans_sp_tr(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 
 void	trans_pl_cam(t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
-	if ((*ptr)->ptr_last->id == 5)
+	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 5)
 	{
 		obj->plan = (t_plan *)(*ptr)->ptr_last->obj;
 		obj->plan->plan_p = addition(obj->plan->plan_p, *obj->tr);
@@ -71,7 +71,7 @@ void	translate(char **str, t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
 {
 	if (str[0][0] == 't' && str[0][1] == 'a')
 	{
-		if ((*ptr)->ptr_last)
+		if ((*ptr)->ptr_last != NULL || (*c_ptr)->c_ptr_last != NULL)
 		{
 			obj->tr = fill_translation(str);
 			trans_cy_sq_li(obj, c_ptr, ptr);

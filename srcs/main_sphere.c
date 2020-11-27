@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 14:06:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 22:23:30 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/27 09:17:33 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int		main(int argc, char **argv)
 	move.object.light->kl = 0;
 	move.object.light->light_p = (t_vector){0, 0, 0};
 	parsing(&move, &move.liste, &move.c_liste, argv[1]);
-	//mlx_get_screen_size(move.w.mlx_ptr, &a, &b);
-	//resize(a,b,&move);
+	mlx_get_screen_size(move.w.mlx_ptr, &a, &b);
+	resize(a,b,&move);
 	if (argc == 3 && ft_strncmp(argv[2], "--save", 6) == 0)
 		move.bmp = 1;
 	move.w.mlx_ptr = mlx_init();
@@ -52,7 +52,7 @@ int		main(int argc, char **argv)
 	if (move.bmp == 1)
 	{
 		save_bmp_image(move);
-		free_my_list(move.liste,move.c_liste);
+		free_my_list(move.c_liste,move.liste);
 	}
 	if (move.bmp == 0)
 	{

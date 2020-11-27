@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_struct2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 11:59:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 21:42:06 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/27 09:18:20 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	cam_checker(char *str, int **error_nb)
 	return (0);
 }
 
-int	just_checking(char *str,int *er, int error)
+int	just_checking(char *str, int *er, int error)
 {
 	if (er[0] == 0)
 		return (my_checker_free(str, -8, 0));

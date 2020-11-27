@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_mouse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 12:07:28 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 22:24:13 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/27 10:23:00 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ t_vector	rot_z(t_vector vec, double teta)
 
 int			press_key(int key, t_move *move)
 {
-	if (key == 53 || key == 12)
-	{
-		free_my_list(move->liste,move->c_liste);
-		exit(0);
-	}
+	escape(key, move);
 	if (key == 124 && move->button == 1 && move->c_liste->next != NULL)
 	{
 		move->c_liste = move->c_liste->next;

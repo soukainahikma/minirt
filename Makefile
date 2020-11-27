@@ -62,7 +62,7 @@ $(NAME): $(OBJECT)
 	@$(AR) $(NAME) $(OBJECT)
 	@cp ./minilibx_opengl_20191021/libmlx.a .
 	@cp ./minilibx_mms_20200219/libmlx.dylib .
-	@gcc $(FLAGS)  -I /usr/local/include -L ./minilibx_opengl_20191021 libmlx.a libmlx.dylib -lmlx -framework OpenGl -framework AppKit  minirt.a
+	@gcc $(FLAGS)  -I /usr/local/include -L ./minilibx_opengl_20191021 libmlx.a libmlx.dylib -lmlx -framework OpenGl -framework AppKit  minirt.a -o miniRT
 
 %.o: %.c
 	@gcc $(FLAGS) -I $(HEADERS)  -o $@ -c $<
@@ -75,6 +75,7 @@ clean:
 	@make clean -sC $(MLX_OGL) 
 	@rm -f libmlx.dylib
 	@rm -f libmlx.a
+	@rm -f miniRT
 
 fclean: clean
 	@rm -f $(NAME)

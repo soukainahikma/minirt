@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 22:22:33 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/27 11:27:08 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ int				tra_checker(char *str);
 int				rot_checker(char *str);
 double			ft_atof(char *s);
 int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
-int				just_checking(char *str,int *er, int error);
+int				just_checking(char *str, int *er, int error);
 int				my_checker_free(char *str, int error, int i);
 int				my_free(char *str);
 void			free_c_liste(t_cam_elm *c_liste);

@@ -6,13 +6,13 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 13:45:04 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 10:22:19 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/27 11:08:09 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	escape(int key, t_move *move)
+void		escape(int key, t_move *move)
 {
 	if (key == 53 || key == 12)
 	{

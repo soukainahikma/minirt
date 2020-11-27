@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:17:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 20:39:56 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/27 11:07:38 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_vector		draw(t_vector ray, t_move *mv)
 	{
 		ray_info.id = 0;
 		t1 = inter(ptr, &ray_info, mv->object.camera->lookfrom, &mv->object);
-		int t2 = 0;
 		if (t1 == 1)
 		{
 			color = light(ptr, mv, &ray_info);

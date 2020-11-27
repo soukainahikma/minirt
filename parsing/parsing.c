@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 13:21:51 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 14:17:57 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/26 21:47:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,16 @@ void	parsing(t_move *move, t_element **ptr, t_cam_elm **c_ptr, char *str)
 	{
 		rest = get_next_line(fd, &line);
 		if (nb_word(line) == 0)
+		{
+			my_free(line);
 			continue;
+		}
 		t = ft_split_whitespaces(line);
 		fill_struct(t, &move->data, &move->object, ptr);
 		fill_cam(t, &move->data, &move->object, c_ptr);
 		rotate(t, &move->object, c_ptr, ptr);
 		translate(t, &move->object, c_ptr, ptr);
+		my_free(line);
 	}
 	close(fd);
 }

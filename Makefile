@@ -48,8 +48,8 @@ SRC  =	srcs/intersection.c\
 		parsing/general_check.c\
 		parsing/parse_translation.c\
 		parsing/parse_rotation.c\
-
-
+		parsing/my_free.c\
+		
 
 HEADERS = ./includes/
 OBJECT = $(SRC:.c=.o)

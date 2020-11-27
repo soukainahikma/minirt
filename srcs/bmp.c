@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:50:26 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 10:03:38 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/19 08:42:15 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		save_bmp_image(t_move move)
 	t_bmp		img;
 	int			file;
 
-	file = open("minirt.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0666);
+	file = open("rt.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0666);
 	img = init_bmph(move);
 	write(file, &img, 54);
 	write(file, move.w.img_data, img.raw_bitmap_size);

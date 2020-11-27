@@ -14,12 +14,13 @@ SRC  =	srcs/intersection.c\
 		srcs/camera.c_and_ray.c\
 		srcs/color.c\
 		srcs/light_intensity.c\
-		srcs/main.c\
+		srcs/main_sphere.c\
 		srcs/shadow_intersection.c\
 		srcs/draw.c\
 		srcs/keyboard_mouse.c\
 		srcs/bmp.c\
 		srcs/ft_atof.c\
+		srcs/zprint.c\
 		\
 		parsing/fill_ambiant.c\
 		parsing/fill_light.c \
@@ -48,7 +49,9 @@ SRC  =	srcs/intersection.c\
 		parsing/parse_translation.c\
 		parsing/parse_rotation.c\
 		parsing/my_free.c\
-		
+
+
+
 HEADERS = ./includes/
 OBJECT = $(SRC:.c=.o)
 MLX_MMS = ./minilibx_mms_20200219

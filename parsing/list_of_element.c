@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:45:59 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/20 10:49:49 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/27 13:57:59 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_cam_elm	*add_c_end(t_cam_elm **liste, void *elt, size_t data_size)
 {
 	t_cam_elm	*new;
 	t_cam_elm	*ptr;
-	t_cam_elm	*pv;
 
 	ptr = *liste;
 	new = (t_cam_elm *)malloc(sizeof(t_cam_elm));

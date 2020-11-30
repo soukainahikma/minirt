@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cylindre.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 08:52:52 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:12:53 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ t_sq	*fill_square(char **t)
 	sq->sq_col.x = ft_atof(t3[0]);
 	sq->sq_col.y = ft_atof(t3[1]);
 	sq->sq_col.z = ft_atof(t3[2]);
+	free_tab(t1,3);
+	free_tab(t2,3);
+	free_tab(t3,3);
 	return (sq);
 }

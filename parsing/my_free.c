@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 09:20:07 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 12:58:29 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:07:23 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		my_checker_free(char *str, int error, int i)
 	return (my_file(error, i));
 }
 
-int		my_free(char *str)
+int		my_free(void *str)
 {
 	free(str);
 	str = NULL;
@@ -61,4 +61,17 @@ int		free_my_list(t_cam_elm *c_liste, t_element *liste)
 	free_c_liste(c_liste);
 	free_liste(liste);
 	return (0);
+}
+
+void	free_tab(char **info,int n)
+{
+	int i;
+
+	i = 0;
+	while(i<n)
+	{
+		my_free(info[i]);
+		i++;
+	}
+	my_free(info);
 }

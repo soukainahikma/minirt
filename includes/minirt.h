@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 19:50:47 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 11:12:13 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ double			dot(t_vector a, t_vector b);
 t_vector		get_ray(t_camera *camera_, double u, double v);
 int				get_color(t_vector clr);
 t_vector		light(t_element *ptr, t_move *move, t_raydata *ray_);
-void			calculate_light(t_vector direction, t_object *object,
+void			calculate_light(t_object *object,
 t_light *light);
 t_vector		ray(t_vector origin, t_vector direction, double t);
 double			hit_sphere(t_vector cam, t_raydata *ray_info,
@@ -95,7 +95,7 @@ double			check_distance(t_vector origin, t_vector light,
 t_vector object, t_vector cam);
 void			image(t_move *move);
 int				press_key(int key, t_move *move);
-int				press_mouse(int button, int x, int y, t_move *move);
+int				press_mouse(int button, t_move *move);
 void			sphere_translation(int key, t_move *move);
 void			sq_translation(int key, t_move *move);
 void			cylindre_translation(int key, t_move *move);

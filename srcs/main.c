@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 14:06:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 13:17:19 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:14:44 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	resize(int a, int b, t_move *move)
 {
-	if (b < move->data.res->h)
-		move->data.res->h = b;
-	if (a < move->data.res->w)
-		move->data.res->w = a;
+	if (b < move->data.res.h)
+		move->data.res.h = b;
+	if (a < move->data.res.w)
+		move->data.res.w = a;
 }
 
 void	render_or_save(t_move move)
@@ -29,7 +29,6 @@ void	render_or_save(t_move move)
 	}
 	if (move.bmp == 0)
 	{
-		mlx_hook(move.w.win_ptr, 4, 0, press_mouse, &move);
 		mlx_hook(move.w.win_ptr, 2, 0, press_key, &move);
 		mlx_put_image_to_window(move.w.mlx_ptr,
 		move.w.win_ptr, move.w.img_ptr, 0, 0);
@@ -41,9 +40,9 @@ void	make_wim(t_move *move)
 {
 	move->w.mlx_ptr = mlx_init();
 	move->w.win_ptr = mlx_new_window(move->w.mlx_ptr,
-		move->data.res->w, move->data.res->h, "miniRT");
+		move->data.res.w, move->data.res.h, "miniRT");
 	move->w.img_ptr = mlx_new_image(move->w.mlx_ptr,
-		move->data.res->w, move->data.res->h);
+		move->data.res.w, move->data.res.h);
 	move->w.img_data = (int *)mlx_get_data_addr(move->w.img_ptr,
 		&move->w.bpp, &move->w.size_l, &move->w.img_endian);
 	move->object.camera = move->c_liste->cam;
@@ -72,7 +71,7 @@ int		main(int argc, char **argv)
 		move.bmp = 1;
 	make_wim(&move);
 	ft_camera(move.object.camera, (t_vector){0, 1, 0},
-	move.data.res->w / move.data.res->h);
+	move.data.res.w / move.data.res.h);
 	image(&move);
 	render_or_save(move);
 }

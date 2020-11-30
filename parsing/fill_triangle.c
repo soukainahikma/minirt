@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_triangle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:17:40 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:13:17 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ t_triangle	*fill_triangle(char **t)
 	tr->tr_col.x = ft_atof(t4[0]);
 	tr->tr_col.y = ft_atof(t4[1]);
 	tr->tr_col.z = ft_atof(t4[2]);
+	free_tab(t1,3);
+	free_tab(t2,3);
+	free_tab(t3,3);
+	free_tab(t4,3);
 	return (tr);
 }

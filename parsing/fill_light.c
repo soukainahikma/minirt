@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:02:11 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:11:20 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ t_light	*fill_light(char **t)
 	l->color.x = ft_atof(t2[0]);
 	l->color.y = ft_atof(t2[1]);
 	l->color.z = ft_atof(t2[2]);
+	free_tab(t1,3);
+	free_tab(t2,3);
 	return (l);
 }

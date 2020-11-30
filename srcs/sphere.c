@@ -6,13 +6,13 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 12:22:02 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/24 16:43:17 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:18:53 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	calculate_spt(t_vector cam, t_object *obj, t_vector oc, t_raydata *ray_)
+double	calculate_spt(t_object *obj, t_vector oc, t_raydata *ray_)
 {
 	double		t1;
 	double		t2;
@@ -38,7 +38,7 @@ double	hit_sphere(t_vector cam, t_raydata *ray_, t_object *obj)
 	t_vector	oc;
 
 	oc = soustraction(cam, obj->sphere->sphere_p);
-	t1 = calculate_spt(cam, obj, oc, ray_);
+	t1 = calculate_spt(obj, oc, ray_);
 	if (t1 >= 0)
 	{
 		ray_->t = t1;
@@ -48,8 +48,7 @@ double	hit_sphere(t_vector cam, t_raydata *ray_, t_object *obj)
 			obj->light->hit = ray(cam, ray_->ray_direc[ray_->id], t1);
 			obj->light->normal = soustraction(obj->light->hit,
 			obj->sphere->sphere_p);
-			obj->obj_col = malloc(sizeof(t_vector));
-			*(obj->obj_col) = obj->sphere->sphere_col;
+			obj->obj_col = obj->sphere->sphere_col;
 			return (1);
 		}
 	}

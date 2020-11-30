@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:17:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 13:22:47 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:16:50 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_vector		draw(t_vector ray, t_move *mv)
 	{
 		ray_info.id = 0;
 		t1 = inter(ptr, &ray_info, mv->object.camera->lookfrom, &mv->object);
+		t2 = 0;
 		if (t1 == 1)
 		{
 			color = light(ptr, mv, &ray_info);
@@ -46,15 +47,15 @@ void			image(t_move *move)
 	t_vector	ray;
 
 	i = 0;
-	j = move->data.res->h - 1;
+	j = move->data.res.h - 1;
 	k = 0;
 	while (j-- >= 0)
 	{
 		i = 0;
-		while (i++ < move->data.res->w)
+		while (i++ < move->data.res.w)
 		{
 			ray = get_ray(move->object.camera,
-			i / (move->data.res->w - 1), j / (move->data.res->h - 1));
+			i / (move->data.res.w - 1), j / (move->data.res.h - 1));
 			move->w.img_data[k++] = get_color(draw(ray, move));
 		}
 	}

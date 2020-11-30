@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 13:00:26 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 13:01:41 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:20:16 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int		tr_cal(t_vector cam, t_raydata *ray_, t_object *obj, t_vector norm)
 		obj->light->normal = norm;
 	else
 		obj->light->normal = multiplication(-1, norm);
-	obj->obj_col = malloc(sizeof(t_vector));
-	*(obj->obj_col) = obj->triangle->tr_col;
+	obj->obj_col = obj->triangle->tr_col;
 	ray_->max_d[ray_->id] = ray_->t;
 	return (1);
 }

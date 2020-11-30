@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:17:37 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 13:03:10 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:22:11 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ double		check_distance(t_vector origin, t_vector light,
 	double		b;
 	t_vector	c;
 	t_vector	d;
-	double		dt;
 
 	c = soustraction(light, origin);
 	d = soustraction(object, origin);
 	a = norm(c);
 	b = norm(d);
-	if (a > b && dot(c, d) > 0)
+	if (a > b && dot(c, d) >= 0)
 	{
-		if (dot(cam, (soustraction(light, origin))) < 0)
+		if (dot(cam, (soustraction(light, origin))) <= 0)
 			return (1);
 	}
 	return (0);
@@ -68,7 +67,7 @@ t_vector	shadow(t_element *list, t_move *all, t_vector col, t_raydata *ray_)
 	t_element	*list_obj;
 	t_vector	shadow_col;
 
-	shadow_col = multiplication((double)1 / 255, *(all->object).obj_col);
+	shadow_col = multiplication((double)1 / 255, all->object.obj_col);
 	ray_->id = 1;
 	all->sh_d = all->object.light->normal;
 	all->new_start = all->object.light->hit;
@@ -79,7 +78,7 @@ t_vector	shadow(t_element *list, t_move *all, t_vector col, t_raydata *ray_)
 		if (list_obj != list)
 		{
 			if (call_light(all->liste, list_obj, all, ray_) == 1)
-				return (multiplication(all->data.am->ka, shadow_col));
+				return (multiplication(all->data.am.ka, shadow_col));
 		}
 		list_obj = list_obj->next;
 	}

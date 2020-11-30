@@ -1,6 +1,6 @@
 NAME = minirt.a
 AR = ar rcs
-LMLX_FLAG= -L ./minilibx_opengl_20191021 libmlx.a -L ./minilibx_mms_20200219 libmlx.dylib -framework OpenGL -framework AppKit
+#-Wall -Werror -Wextra
 FLAGS =  
 SRC  =	srcs/intersection.c\
 		srcs/ray.c\

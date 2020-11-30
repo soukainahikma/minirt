@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 12:57:08 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:18:29 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct	s_object
 	t_sq			*sq;
 	t_cylindre		*cy;
 	t_triangle		*triangle;
-	t_vector		*obj_col;
+	t_vector		obj_col;
 	t_vector		*shd_col;
 	t_shd			*shd;
 	t_vector		*rot;
@@ -135,18 +135,18 @@ typedef struct	s_cam_elm
 }				t_cam_elm;
 typedef struct	s_data
 {
-	t_resolution	*res;
-	t_ambiant		*am;
+	t_resolution	res;
+	t_ambiant		am;
 }				t_data;
 
 t_element		*add_end(t_element **liste, void *elt,
 int id, size_t data_size);
 t_element		*create_list(void *elt, int id, size_t data_size);
-t_vector		*fill_rotation(char **t);
-t_vector		*fill_translation(char **t);
-t_ambiant		*fill_ambiant(char **t);
+t_vector		fill_rotation(char **t);
+t_vector		fill_translation(char **t);
+t_ambiant		fill_ambiant(char **t);
 t_camera		*fill_camera(char **t);
-t_resolution	*fill_resolution(char **t);
+t_resolution	fill_resolution(char **t);
 t_light			*fill_light(char **t);
 void			fill_struct(char **info, t_data *data, t_object *object,
 t_element **liste);
@@ -208,8 +208,9 @@ double			ft_atof(char *s);
 int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 int				just_checking(char *str, int *er, int error);
 int				my_checker_free(char *str, int error, int i);
-int				my_free(char *str);
+int				my_free(void *str);
 void			free_c_liste(t_cam_elm *c_liste);
 void			free_liste(t_element *liste);
 int				free_my_list(t_cam_elm *c_liste, t_element *liste);
+void			free_tab(char **info,int n);
 #endif

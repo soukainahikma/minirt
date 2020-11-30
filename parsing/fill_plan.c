@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_plan.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:06:04 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/25 07:33:33 by marvin           ###   ########.fr       */
+/*   Updated: 2020/11/30 14:11:47 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ t_plan	*fill_plan(char **t)
 	object->plan_col.x = ft_atof(t3[0]);
 	object->plan_col.y = ft_atof(t3[1]);
 	object->plan_col.z = ft_atof(t3[2]);
+	free_tab(t1,3);
+	free_tab(t2,3);
+	free_tab(t3,3);
 	return (object);
 }

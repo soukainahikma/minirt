@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:13:55 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:12:29 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:29:32 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_sphere	*fill_sphere(char **t)
 	sphere->sphere_col.x = ft_atof(t2[0]);
 	sphere->sphere_col.y = ft_atof(t2[1]);
 	sphere->sphere_col.z = ft_atof(t2[2]);
-	free_tab(t1,3);
-	free_tab(t2,3);
+	free_tab(t1, 3);
+	free_tab(t2, 3);
 	return (sphere);
 }

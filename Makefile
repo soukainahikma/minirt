@@ -1,7 +1,6 @@
 NAME = minirt.a
 AR = ar rcs
-#-Wall -Werror -Wextra
-FLAGS =  
+FLAGS =  -Wall -Werror -Wextra
 SRC  =	srcs/intersection.c\
 		srcs/ray.c\
 		srcs/plan.c\

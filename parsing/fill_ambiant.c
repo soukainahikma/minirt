@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 08:46:52 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:10:02 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:28:35 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ t_ambiant	fill_ambiant(char **t)
 	am.amb_p.y = ft_atof(t1[1]);
 	am.amb_p.z = ft_atof(t1[2]);
 	am.ka = ft_atof(t[1]);
-	free_tab(t1,3);
+	free_tab(t1, 3);
 	return (am);
 }

@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:48:55 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/26 18:27:10 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 20:06:26 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_kl_ka_fov_res(int id, char *t)
 	}
 	if (id == 2)
 	{
-		if (is_float(t) == 1)
+		if (is_float(t) == 1 && ft_atof(t) >= 0 && ft_atof(t) <= 180)
 			return (1);
 		else
 			return (0);

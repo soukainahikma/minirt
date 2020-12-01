@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 12:07:28 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:25:46 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:45:16 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int			press_key(int key, t_move *move)
 		ft_camera(move->object.camera, (t_vector){0, 1, 0},
 		move->data.res.w / move->data.res.h);
 		mlx_clear_window(move->w.mlx_ptr, move->w.win_ptr);
-
 		image(move);
 		mlx_put_image_to_window(move->w.mlx_ptr, move->w.win_ptr,
 		move->w.img_ptr, 0, 0);

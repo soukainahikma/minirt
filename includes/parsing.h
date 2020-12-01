@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:42:56 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:18:29 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 19:07:41 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,7 @@ t_ambiant		fill_ambiant(char **t);
 t_camera		*fill_camera(char **t);
 t_resolution	fill_resolution(char **t);
 t_light			*fill_light(char **t);
-void			fill_struct(char **info, t_data *data, t_object *object,
-t_element **liste);
+void			fill_struct(char **info, t_data *data, t_element **liste);
 t_plan			*fill_plan(char **t);
 void			list_printer(t_element *list);
 void			c_list_printer(t_cam_elm *c_list);
@@ -186,10 +185,9 @@ int				get_next_line(int fd, char **line);
 char			*ft_strdup(const char *src);
 size_t			ft_strlen(const char *str);
 char			**ft_split(char const *s, char c);
-void			translate(char **info, t_object *object,
+void			translate(char **info,
 t_cam_elm **c_ptr, t_element **ptr);
-void			rotate(char **info, t_object *object,
-t_cam_elm **c_ptr, t_element **ptr);
+void			rotate(char **info, t_cam_elm **c_ptr, t_element **ptr);
 t_vector		rot_x(t_vector vec, double teta);
 t_vector		rot_y(t_vector vec, double teta);
 t_vector		rot_z(t_vector vec, double teta);
@@ -206,11 +204,11 @@ int				tra_checker(char *str);
 int				rot_checker(char *str);
 double			ft_atof(char *s);
 int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
-int				just_checking(char *str, int *er, int error);
+int				just_checking(int *er, int error);
 int				my_checker_free(char *str, int error, int i);
 int				my_free(void *str);
 void			free_c_liste(t_cam_elm *c_liste);
 void			free_liste(t_element *liste);
 int				free_my_list(t_cam_elm *c_liste, t_element *liste);
-void			free_tab(char **info,int n);
+void			free_tab(char **info, int n);
 #endif

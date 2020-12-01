@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 09:53:19 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:20:16 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:44:29 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ double	hit_cylinder(t_vector cam, t_raydata *ray_, t_object *obj)
 			obj->cy->cy_p);
 			obj->light->normal = soustraction(obj->light->normal,
 			multiplication(obj->cy->m2, obj->cy->cy_d));
-			//obj->obj_col = malloc(sizeof(t_vector));
 			obj->obj_col = obj->cy->cy_col;
 			ray_->max_d[ray_->id] = t2;
 			return (1);

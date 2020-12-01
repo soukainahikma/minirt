@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:21:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 12:28:22 by shikma           ###   ########.fr       */
+/*   Updated: 2020/12/01 09:13:16 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	rot_cy_sq(t_vector rot, t_cam_elm **c_ptr, t_element **ptr)
 {
-	t_sq *sq;
-	t_cylindre *cy;
+	t_sq		*sq;
+	t_cylindre	*cy;
 
-	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 8)
+	if ((*ptr) && (*ptr)->ptr_last && (*ptr)->ptr_last->id == 8)
 	{
 		cy = (t_cylindre *)(*ptr)->ptr_last->obj;
 		cy->cy_d = rot_x(cy->cy_d, rot.x * M_PI / 180);
@@ -25,7 +25,7 @@ void	rot_cy_sq(t_vector rot, t_cam_elm **c_ptr, t_element **ptr)
 		cy->cy_d = rot_z(cy->cy_d, rot.z * M_PI / 180);
 		(*c_ptr)->c_ptr_last = NULL;
 	}
-	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 7)
+	if ((*ptr) && (*ptr)->ptr_last && (*ptr)->ptr_last->id == 7)
 	{
 		sq = (t_sq *)(*ptr)->ptr_last->obj;
 		sq->sq_d = rot_x(sq->sq_d, rot.x * M_PI / 180);
@@ -37,10 +37,10 @@ void	rot_cy_sq(t_vector rot, t_cam_elm **c_ptr, t_element **ptr)
 
 void	rot_pl_cam(t_vector rot, t_cam_elm **c_ptr, t_element **ptr)
 {
-	t_plan *p;
-	t_camera *c;
+	t_plan		*p;
+	t_camera	*c;
 
-	if ((*ptr)->ptr_last && (*ptr)->ptr_last->id == 5)
+	if ((*ptr) && (*ptr)->ptr_last && (*ptr)->ptr_last->id == 5)
 	{
 		p = (t_plan *)(*ptr)->ptr_last->obj;
 		p->plan_d = rot_x(p->plan_d, rot.x * M_PI / 180);
@@ -48,7 +48,7 @@ void	rot_pl_cam(t_vector rot, t_cam_elm **c_ptr, t_element **ptr)
 		p->plan_d = rot_z(p->plan_d, rot.z * M_PI / 180);
 		(*c_ptr)->c_ptr_last = NULL;
 	}
-	else if ((*c_ptr)->c_ptr_last != NULL)
+	else if ((*c_ptr) && (*c_ptr)->c_ptr_last != NULL)
 	{
 		c = (t_camera *)(*c_ptr)->c_ptr_last->cam;
 		c->cam_d = rot_x(c->cam_d, rot.x * M_PI / 180);
@@ -57,13 +57,12 @@ void	rot_pl_cam(t_vector rot, t_cam_elm **c_ptr, t_element **ptr)
 	}
 }
 
-void	rotate(char **info, t_object *obj, t_cam_elm **c_ptr, t_element **ptr)
+void	rotate(char **info, t_cam_elm **c_ptr, t_element **ptr)
 {
 	if (info[0][0] == 'r' && info[0][1] == 'o')
 	{
-		if ((*ptr)->ptr_last != NULL || (*c_ptr)->c_ptr_last != NULL)
+		if (((*ptr) != NULL || (*c_ptr) != NULL))
 		{
-		//	obj->rot = fill_rotation(info);
 			rot_cy_sq(fill_rotation(info), c_ptr, ptr);
 			rot_pl_cam(fill_rotation(info), c_ptr, ptr);
 		}

@@ -6,11 +6,19 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:17:40 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:13:17 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:41:26 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void		free_tri_tab(char **t1, char **t2, char **t3, char **t4)
+{
+	free_tab(t1, 3);
+	free_tab(t2, 3);
+	free_tab(t3, 3);
+	free_tab(t4, 3);
+}
 
 t_triangle	*fill_triangle(char **t)
 {
@@ -37,9 +45,6 @@ t_triangle	*fill_triangle(char **t)
 	tr->tr_col.x = ft_atof(t4[0]);
 	tr->tr_col.y = ft_atof(t4[1]);
 	tr->tr_col.z = ft_atof(t4[2]);
-	free_tab(t1,3);
-	free_tab(t2,3);
-	free_tab(t3,3);
-	free_tab(t4,3);
+	free_tri_tab(t1, t2, t3, t4);
 	return (tr);
 }

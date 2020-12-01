@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:11:42 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:09:44 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:29:28 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vector		fill_rotation(char **t)
 	rot.x = ft_atof(t1[0]);
 	rot.y = ft_atof(t1[1]);
 	rot.z = ft_atof(t1[2]);
-	free_tab(t1,3);
+	free_tab(t1, 3);
 	return (rot);
 }
 
@@ -43,6 +43,6 @@ t_vector		fill_translation(char **t)
 	tr.x = ft_atof(t1[0]);
 	tr.y = ft_atof(t1[1]);
 	tr.z = ft_atof(t1[2]);
-	free_tab(t1,3);
+	free_tab(t1, 3);
 	return (tr);
 }

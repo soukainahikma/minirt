@@ -6,18 +6,24 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 13:21:51 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:07:01 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 18:05:52 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "minirt.h"
 
-void	fill_cam(char **info, t_object *object, t_cam_elm **c_ptr)
+int		free_my_list(t_cam_elm *c_liste, t_element *liste)
+{
+	free_c_liste(c_liste);
+	free_liste(liste);
+	return (0);
+}
+
+void	fill_cam(char **info, t_cam_elm **c_ptr)
 {
 	if (info[0][0] == 'c' && info[0][1] != 'y')
 	{
-		//object->camera = fill_camera(info);
 		if (*c_ptr == NULL)
 			*c_ptr = create_c_list(fill_camera(info), sizeof(t_camera));
 		else
@@ -43,12 +49,11 @@ void	parsing(t_move *move, t_element **ptr, t_cam_elm **c_ptr, char *str)
 			continue;
 		}
 		t = ft_split_whitespaces(line);
-		fill_struct(t, &move->data, &move->object, ptr);
-		fill_cam(t, &move->object, c_ptr);
-		rotate(t, &move->object, c_ptr, ptr);
-		translate(t, &move->object, c_ptr, ptr);
+		fill_struct(t, &move->data, ptr);
+		fill_cam(t, c_ptr);
+		rotate(t, c_ptr, ptr);
+		translate(t, c_ptr, ptr);
 		my_free(line);
-//		my_free(t);
 	}
 	close(fd);
 }

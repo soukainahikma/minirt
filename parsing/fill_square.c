@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:15:24 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:10:47 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 16:29:36 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_cylindre	*fill_cylindre(char **t)
 	cy->cy_col.x = ft_atof(t3[0]);
 	cy->cy_col.y = ft_atof(t3[1]);
 	cy->cy_col.z = ft_atof(t3[2]);
-	free_tab(t1,3);
-	free_tab(t2,3);
-	free_tab(t3,3);
+	free_tab(t1, 3);
+	free_tab(t2, 3);
+	free_tab(t3, 3);
 	return (cy);
 }

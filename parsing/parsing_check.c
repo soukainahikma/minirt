@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:52:00 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/27 12:58:54 by shikma           ###   ########.fr       */
+/*   Updated: 2020/11/30 19:07:19 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ int		parsing_check(int error, char **str, int argc, int *error_nb)
 			return (my_checker_free(line, error, rest_i[1]));
 		my_free(line);
 	}
-	return (just_checking(line, error_nb, error));
+	return (just_checking(error_nb, error));
 }

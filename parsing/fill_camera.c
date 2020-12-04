@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 08:48:57 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 16:29:06 by shikma           ###   ########.fr       */
+/*   Updated: 2020/12/04 14:07:59 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_camera	*fill_camera(char **t)
 	cam->cam_d.y = ft_atof(t2[1]);
 	cam->cam_d.z = ft_atof(t2[2]);
 	cam->fov = ft_atof(t[3]);
+	cam->cam_d.x += 0.0001;
 	free_tab(t1, 3);
 	free_tab(t2, 3);
 	return (cam);

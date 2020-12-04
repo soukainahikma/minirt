@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 12:53:31 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 11:12:13 by shikma           ###   ########.fr       */
+/*   Updated: 2020/12/04 12:38:40 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,20 @@ typedef struct	s_move
 	int			bmp;
 	t_vector	sh_d;
 }				t_move;
+
+typedef struct	s_tr_help
+{
+	t_vector	edge1;
+	t_vector	edge2;
+	t_vector	h;
+	t_vector	s;
+	t_vector	q;
+	double		a;
+	double		f;
+	double		u;
+	double		v;
+	double		t;
+}				t_tr_help;
 
 t_vector		addition(t_vector a, t_vector b);
 t_vector		soustraction(t_vector a, t_vector b);

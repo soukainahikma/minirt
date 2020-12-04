@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 14:06:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:14:44 by shikma           ###   ########.fr       */
+/*   Updated: 2020/12/04 12:28:11 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	resize(int a, int b, t_move *move)
 		move->data.res.w = a;
 }
 
+int		ft_close(void)
+{
+	exit(0);
+}
+
 void	render_or_save(t_move move)
 {
 	if (move.bmp == 1)
@@ -30,6 +35,7 @@ void	render_or_save(t_move move)
 	if (move.bmp == 0)
 	{
 		mlx_hook(move.w.win_ptr, 2, 0, press_key, &move);
+		mlx_hook(move.w.win_ptr, 17, 0, ft_close, &move);
 		mlx_put_image_to_window(move.w.mlx_ptr,
 		move.w.win_ptr, move.w.img_ptr, 0, 0);
 		mlx_loop(move.w.mlx_ptr);

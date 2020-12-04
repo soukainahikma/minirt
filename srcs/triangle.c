@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/27 13:00:26 by shikma            #+#    #+#             */
-/*   Updated: 2020/11/30 14:20:16 by shikma           ###   ########.fr       */
+/*   Created: 2020/12/04 12:32:42 by shikma            #+#    #+#             */
+/*   Updated: 2020/12/04 14:23:46 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,44 +24,30 @@ int		tr_cal(t_vector cam, t_raydata *ray_, t_object *obj, t_vector norm)
 	return (1);
 }
 
-void	c_cal(t_vector *c, t_vector hit, t_object *obj)
-{
-	c[0] = soustraction(hit, obj->triangle->tr_p1);
-	c[1] = soustraction(hit, obj->triangle->tr_p2);
-	c[2] = soustraction(hit, obj->triangle->tr_p3);
-}
-
-void	edge_cal(t_vector *edge, t_object *obj)
-{
-	edge[0] = soustraction(obj->triangle->tr_p2, obj->triangle->tr_p1);
-	edge[1] = soustraction(obj->triangle->tr_p3, obj->triangle->tr_p2);
-	edge[2] = soustraction(obj->triangle->tr_p1, obj->triangle->tr_p3);
-}
-
 double	hit_triangle(t_vector cam, t_raydata *ray_, t_object *obj)
 {
-	double		t;
-	double		denominateur;
-	t_vector	edge[3];
-	t_vector	norm;
-	t_vector	c[3];
+	t_tr_help help;
 
-	edge_cal(edge, obj);
-	norm = get_normalize(cross(edge[0], edge[1]));
-	denominateur = dot(ray_->ray_direc[ray_->id], norm);
-	if (ft_fabs(denominateur) == 1e-4f)
+	help.edge1 = soustraction(obj->triangle->tr_p2, obj->triangle->tr_p1);
+	help.edge2 = soustraction(obj->triangle->tr_p3, obj->triangle->tr_p1);
+	help.h = cross(ray_->ray_direc[ray_->id], help.edge2);
+	help.a = dot(help.edge1, help.h);
+	if (help.a > -0.0000001 && help.a < 0.0000001)
 		return (0);
-	t = -dot(soustraction(cam, obj->triangle->tr_p1), norm) / denominateur;
-	c_cal(c, ray(cam, ray_->ray_direc[ray_->id], t), obj);
-	if (dot(norm, cross(edge[0], c[0])) > 0 && dot(norm,
-	cross(edge[1], c[1])) > 0 && dot(norm, cross(edge[2], c[2])) > 0)
-	{
-		if (t >= 1e-4f)
-		{
-			ray_->t = t;
-			if (ray_->max_d[ray_->id] > t)
-				return (tr_cal(cam, ray_, obj, norm));
-		}
-	}
+	help.f = 1.0 / help.a;
+	help.s = soustraction(cam, obj->triangle->tr_p1);
+	help.u = help.f * (dot(help.s, help.h));
+	if (help.u < 0.0 || help.u > 1.0)
+		return (0);
+	help.q = cross(help.s, help.edge1);
+	help.v = help.f * dot(ray_->ray_direc[ray_->id], help.q);
+	if (help.v < 0.0 || help.u + help.v > 1.0)
+		return (0);
+	help.t = dot(help.edge2, help.q) * help.f;
+	if (help.t <= 0.0000001)
+		return (0);
+	ray_->t = help.t;
+	if (ray_->max_d[ray_->id] > help.t)
+		return (tr_cal(cam, ray_, obj, cross(help.edge1, help.edge2)));
 	return (0);
 }

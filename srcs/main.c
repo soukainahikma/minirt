@@ -6,7 +6,7 @@
 /*   By: shikma <shikma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 14:06:29 by shikma            #+#    #+#             */
-/*   Updated: 2020/12/04 12:28:11 by shikma           ###   ########.fr       */
+/*   Updated: 2020/12/05 09:36:40 by shikma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	resize(int a, int b, t_move *move)
 {
-	if (b < move->data.res.h)
+	if (b < move->data.res.h || a < move->data.res.w)
+	{
 		move->data.res.h = b;
-	if (a < move->data.res.w)
 		move->data.res.w = a;
+	}
 }
 
 int		ft_close(void)
